@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IBK Euro Transport — Moving Europe Forward</title>
+<meta name="description" content="Solutions de transport, affrètement et logistique fiables à travers l'Europe. FTL, LTL, transport express, freight forwarding." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0d1b2a;
+    --navy-2:#12233a;
+    --pink:#d4006e;
+    --pink-light:#fdf0f6;
+    --ink:#1c2733;
+    --muted:#64748b;
+    --line:#e7e9ee;
+    --bg:#fafafa;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:#fff;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.disp{font-family:'Space Grotesk',sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px; border-radius:8px; font-weight:700; font-size:14.5px;
+    cursor:pointer; border:none; transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-pink{background:var(--pink); color:#fff; box-shadow:0 8px 20px rgba(212,0,110,.28);}
+  .btn-pink:hover{background:#b3005d;}
+  .btn-outline{background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.35);}
+  .btn-outline:hover{border-color:#fff; background:rgba(255,255,255,.06);}
+  .btn-navy{background:var(--navy); color:#fff;}
+  .btn-navy:hover{background:var(--navy-2);}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--pink); margin-bottom:16px;
+  }
+  .eyebrow::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--pink); display:inline-block;}
+  section{padding:88px 0;}
+  @media (max-width:768px){ section{padding:56px 0;} }
+
+  /* ===== TOPBAR ===== */
+  .topbar{background:var(--navy); color:rgba(255,255,255,.72); font-size:12.5px;}
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding:9px 24px; flex-wrap:wrap; gap:6px;}
+  .topbar a{color:#fff;}
+  .topbar-left{display:flex; gap:22px; flex-wrap:wrap;}
+  .topbar-item{display:flex; align-items:center; gap:6px;}
+
+  /* ===== HEADER ===== */
+  header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line);}
+  .header-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; color:var(--navy);}
+  .logo-mark{width:38px; height:38px; border-radius:9px; background:linear-gradient(135deg, var(--pink), #ff4fa0); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:14px;}
+  .logo small{display:block; font-family:'Inter'; font-weight:600; font-size:10px; letter-spacing:.12em; color:var(--pink); margin-top:1px;}
+  nav.main-nav{display:flex; gap:34px; align-items:center;}
+  nav.main-nav a{font-size:14px; font-weight:600; color:var(--ink);}
+  nav.main-nav a:hover{color:var(--pink);}
+  .nav-pill{background:var(--pink-light); color:var(--pink) !important; padding:7px 14px; border-radius:20px;}
+  .header-right{display:flex; align-items:center; gap:18px;}
+  .burger{display:none; flex-direction:column; gap:4px; cursor:pointer; background:none; border:none;}
+  .burger span{width:22px; height:2px; background:var(--navy);}
+  @media (max-width:900px){
+    nav.main-nav{display:none;}
+    .header-right .btn-pink{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(160deg, var(--navy) 0%, #16283f 55%, var(--navy) 100%);
+    color:#fff; padding:100px 0 120px;
+  }
+  .hero::before{
+    content:''; position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 82% 18%, rgba(212,0,110,.35), transparent 45%),
+      radial-gradient(circle at 8% 90%, rgba(212,0,110,.18), transparent 40%);
+    pointer-events:none;
+  }
+  .hero-route{position:absolute; inset:0; opacity:.16; pointer-events:none;}
+  .hero-inner{position:relative; display:grid; grid-template-columns:1.05fr .95fr; gap:50px; align-items:center;}
+  @media (max-width:900px){ .hero-inner{grid-template-columns:1fr;} }
+  .hero h1{font-size:52px; line-height:1.06; font-weight:700; margin-bottom:20px;}
+  .hero h1 span{color:var(--pink);}
+  @media (max-width:640px){ .hero h1{font-size:36px;} }
+  .hero p.lead{font-size:17px; color:rgba(255,255,255,.72); max-width:480px; margin-bottom:34px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:38px;}
+  .hero-badges{display:flex; gap:26px; flex-wrap:wrap;}
+  .hero-badge{display:flex; align-items:center; gap:10px;}
+  .hero-badge .num{font-family:'Space Grotesk'; font-weight:700; font-size:20px; color:#fff;}
+  .hero-badge .lbl{font-size:11.5px; color:rgba(255,255,255,.55); text-transform:uppercase; letter-spacing:.04em;}
+
+  .hero-visual{position:relative; height:420px;}
+  .route-card{
+    position:absolute; inset:0; border-radius:20px; overflow:hidden;
+    background:linear-gradient(135deg, #16283f, #0a1420);
+    border:1px solid rgba(255,255,255,.08);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .route-card svg{width:88%; height:auto; opacity:.9;}
+  .float-card{
+    position:absolute; background:#fff; color:var(--ink); border-radius:12px;
+    padding:12px 16px; box-shadow:0 16px 40px rgba(0,0,0,.28);
+    display:flex; align-items:center; gap:10px; font-size:12.5px; font-weight:700;
+  }
+  .float-card .dot{width:34px; height:34px; border-radius:9px; background:var(--pink-light); color:var(--pink); display:flex; align-items:center; justify-content:center; font-size:16px;}
+  .float-1{top:14px; right:-6px;}
+  .float-2{bottom:22px; left:-10px;}
+  @media (max-width:900px){ .float-1,.float-2{position:static; margin-top:12px; display:inline-flex;} }
+
+  /* ===== STATS STRIP ===== */
+  .stats{background:#fff; border-bottom:1px solid var(--line);}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); text-align:center; padding:44px 0;}
+  .stats-grid > div{border-right:1px solid var(--line);}
+  .stats-grid > div:last-child{border-right:none;}
+  .stat-num{font-family:'Space Grotesk'; font-weight:700; font-size:34px; color:var(--navy);}
+  .stat-lbl{font-size:12.5px; color:var(--muted); margin-top:4px; text-transform:uppercase; letter-spacing:.03em;}
+  @media (max-width:700px){
+    .stats-grid{grid-template-columns:repeat(2,1fr); gap:24px 0;}
+    .stats-grid > div{border-right:none;}
+  }
+
+  /* ===== SECTION HEAD ===== */
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-head h2{font-size:34px; font-weight:700; color:var(--navy); line-height:1.15;}
+  .section-head p{color:var(--muted); font-size:15.5px; margin-top:14px;}
+
+  /* ===== SERVICES ===== */
+  .services{background:var(--bg);}
+  .svc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:900px){ .svc-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .svc-grid{grid-template-columns:1fr;} }
+  .svc-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:28px; transition:box-shadow .2s, transform .2s;}
+  .svc-card:hover{box-shadow:0 16px 34px rgba(13,27,42,.08); transform:translateY(-3px); border-color:transparent;}
+  .svc-icon{width:46px; height:46px; border-radius:11px; background:var(--pink-light); color:var(--pink); display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:18px;}
+  .svc-card h3{font-size:17px; color:var(--navy); margin-bottom:8px;}
+  .svc-card p{font-size:13.5px; color:var(--muted); margin-bottom:16px;}
+  .svc-card .lnk{font-size:13px; font-weight:700; color:var(--pink);}
+
+  /* ===== WHY CHOOSE US ===== */
+  .why-inner{display:grid; grid-template-columns:.85fr 1.15fr; gap:60px; align-items:center;}
+  @media (max-width:900px){ .why-inner{grid-template-columns:1fr;} }
+  .why-visual{position:relative; border-radius:18px; overflow:hidden; height:400px; background:linear-gradient(150deg,var(--navy),#1a3350);}
+  .why-visual svg{position:absolute; inset:0; width:100%; height:100%; opacity:.9;}
+  .why-badge{
+    position:absolute; bottom:20px; right:20px; background:#fff; border-radius:12px; padding:16px 20px;
+    box-shadow:0 16px 34px rgba(0,0,0,.25);
+  }
+  .why-badge .num{font-family:'Space Grotesk'; font-weight:700; font-size:26px; color:var(--pink);}
+  .why-badge .lbl{font-size:11.5px; color:var(--muted);}
+  .feat-list{display:grid; grid-template-columns:1fr 1fr; gap:26px 28px;}
+  @media (max-width:520px){ .feat-list{grid-template-columns:1fr;} }
+  .feat{display:flex; gap:13px; align-items:flex-start;}
+  .feat .ic{width:38px; height:38px; border-radius:10px; background:var(--pink-light); color:var(--pink); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;}
+  .feat h4{font-size:14.5px; color:var(--navy); margin-bottom:4px;}
+  .feat p{font-size:12.5px; color:var(--muted); line-height:1.5;}
+
+  /* ===== IBK CONNECT ===== */
+  .connect{
+    background:linear-gradient(160deg, var(--navy), #16283f);
+    color:#fff;
+  }
+  .connect .section-head h2, .connect .section-head p{color:#fff;}
+  .connect .section-head p{color:rgba(255,255,255,.6);}
+  .connect-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:800px){ .connect-grid{grid-template-columns:1fr;} }
+  .connect-card{
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:30px;
+    transition:border-color .2s, background .2s;
+  }
+  .connect-card:hover{border-color:var(--pink); background:rgba(255,255,255,.06);}
+  .connect-ic{width:44px; height:44px; border-radius:11px; background:var(--pink); display:flex; align-items:center; justify-content:center; font-size:19px; margin-bottom:20px;}
+  .connect-card h3{font-size:18px; margin-bottom:8px;}
+  .connect-card p{font-size:13.5px; color:rgba(255,255,255,.6); margin-bottom:20px; line-height:1.55;}
+
+  /* ===== ACHIEVEMENTS ===== */
+  .ach-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:48px;}
+  @media (max-width:700px){ .ach-stats{grid-template-columns:repeat(2,1fr);} }
+  .ach-stat{background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px; text-align:center;}
+  .ach-stat .num{font-family:'Space Grotesk'; font-weight:700; font-size:28px; color:var(--pink);}
+  .ach-stat .lbl{font-size:12px; color:var(--muted); margin-top:2px;}
+  .ach-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:900px){ .ach-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .ach-grid{grid-template-columns:1fr;} }
+  .ach-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px;}
+  .ach-tag{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--pink); margin-bottom:10px;}
+  .ach-card h4{font-size:15px; color:var(--navy); margin-bottom:8px;}
+  .ach-card p{font-size:12.5px; color:var(--muted); line-height:1.5;}
+
+  /* ===== COVERAGE ===== */
+  .coverage{background:var(--navy); color:#fff;}
+  .coverage .section-head h2, .coverage .section-head p{color:#fff;}
+  .coverage .section-head p{color:rgba(255,255,255,.6);}
+  .cov-inner{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;}
+  @media (max-width:800px){ .cov-inner{grid-template-columns:1fr;} }
+  .cov-list{display:grid; grid-template-columns:1fr 1fr; gap:12px 26px;}
+  .cov-list div{font-size:14px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.08); color:rgba(255,255,255,.85);}
+  .cov-hq{background:rgba(212,0,110,.12); border:1px solid rgba(212,0,110,.35); border-radius:12px; padding:20px; margin-bottom:22px;}
+  .cov-hq .tag{font-size:11px; font-weight:700; text-transform:uppercase; color:var(--pink); letter-spacing:.05em;}
+  .cov-hq .place{font-family:'Space Grotesk'; font-weight:700; font-size:19px; margin-top:4px;}
+
+  /* ===== FAQ ===== */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding:20px 4px; display:flex; justify-content:space-between; align-items:center;
+    font-size:15px; font-weight:600; color:var(--navy); font-family:'Inter';
+  }
+  .faq-q .plus{font-size:20px; color:var(--pink); transition:transform .2s; flex-shrink:0; margin-left:16px;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{font-size:13.5px; color:var(--muted); padding:0 4px 20px; line-height:1.6;}
+
+  /* ===== FINAL CTA ===== */
+  .final-cta{
+    background:linear-gradient(120deg, var(--pink), #ff2e8f);
+    border-radius:22px; padding:52px 46px; color:#fff;
+    display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;
+  }
+  .final-cta h2{font-size:27px; margin-bottom:8px;}
+  .final-cta p{font-size:14.5px; color:rgba(255,255,255,.85);}
+  .final-cta .btn-navy{background:#fff; color:var(--pink);}
+  .final-cta .btn-navy:hover{background:#f3f3f3;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy); color:rgba(255,255,255,.6); padding:70px 0 26px; font-size:13.5px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.1fr; gap:40px; margin-bottom:50px;}
+  @media (max-width:800px){ .foot-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .foot-grid{grid-template-columns:1fr;} }
+  .foot-grid h5{color:#fff; font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:18px;}
+  .foot-grid li{list-style:none; margin-bottom:11px;}
+  .foot-grid a:hover{color:#fff;}
+  .foot-logo{display:flex; align-items:center; gap:10px; margin-bottom:16px;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12.5px;}
+  .foot-bottom a{margin-left:18px;}
+  .foot-bottom a:first-child{margin-left:0;}
+
+  .placeholder-note{
+    background:#fff3cd; border:1px solid #ffe08a; color:#7a5b00; font-size:12px;
+    padding:6px 10px; border-radius:6px; display:inline-block; margin-top:8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-left">
+      <span class="topbar-item">📞 <a href="tel:+33185763070">01 85 76 30 70</a></span>
+      <span class="topbar-item">🕗 Lun–Sam : 8h00–18h00</span>
+    </div>
+    <div class="topbar-left">
+      <a href="#careers">Carrières</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">IBK</span>
+      <span>IBK EURO<br><small>TRANSPORT</small></span>
+    </a>
+    <nav class="main-nav">
+      <a href="#accueil">Accueil</a>
+      <a href="#services">Services</a>
+      <a href="#why">À propos</a>
+      <a href="#connect" class="nav-pill">IBK Connect</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-right">
+      <a href="#contact" class="btn btn-pink">Demander un devis</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="accueil" style="padding-top:80px;">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow" style="color:#ff5fac;">Partenaire transport de confiance en Europe</div>
+      <h1>Faire avancer<br>l'Europe, <span>ensemble</span></h1>
+      <p class="lead">Solutions de transport, affrètement et logistique fiables à travers l'Europe. Du camion complet au groupage, de la livraison express au freight forwarding — on fait avancer votre activité.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-pink">Demander un devis →</a>
+        <a href="#contact" class="btn btn-outline">Nous contacter</a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge"><span class="num">🇪🇺</span><span class="lbl">Réseau<br>européen</span></div>
+        <div class="hero-badge"><span class="num">✓</span><span class="lbl">Assuré &<br>certifié</span></div>
+        <div class="hero-badge"><span class="num">24/7</span><span class="lbl">Support<br>dédié</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="route-card">
+        <!-- Illustration temporaire — à remplacer par une vraie photo -->
+        <svg viewBox="0 0 400 260" fill="none">
+          <path d="M10 210 Q100 140 200 170 T390 100" stroke="#d4006e" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+          <circle cx="10" cy="210" r="6" fill="#d4006e"/>
+          <circle cx="390" cy="100" r="6" fill="#fff"/>
+          <rect x="150" y="150" width="70" height="40" rx="6" fill="#1a3350" stroke="#d4006e" stroke-width="1.5"/>
+          <rect x="212" y="160" width="26" height="30" rx="4" fill="#d4006e"/>
+          <circle cx="168" cy="192" r="7" fill="#0a1420" stroke="#fff" stroke-width="2"/>
+          <circle cx="222" cy="192" r="7" fill="#0a1420" stroke="#fff" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="float-card float-1"><span class="dot">⏱</span> 99% livraisons à l'heure</div>
+      <div class="float-card float-2"><span class="dot">🎧</span> Support 24/7</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap stats-grid">
+    <div><div class="stat-num">10+</div><div class="stat-lbl">Pays couverts</div></div>
+    <div><div class="stat-num">99%</div><div class="stat-lbl">Livraisons à l'heure</div></div>
+    <div><div class="stat-num">50+</div><div class="stat-lbl">Transporteurs partenaires</div></div>
+    <div><div class="stat-num">24/7</div><div class="stat-lbl">Support dédié</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Ce que nous faisons</div>
+      <h2>Des solutions de transport et logistique complètes</h2>
+      <p>Du camion complet au freight forwarding, nous proposons des services logistiques de bout en bout adaptés à votre activité.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🚛</div>
+        <h3>Transport FTL</h3>
+        <p>Camions complets dédiés à travers l'Europe, trajets directs sans transbordement.</p>
+        <a href="#contact" class="lnk">En savoir plus →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
+        <h3>Transport LTL</h3>
+        <p>Groupage pour des envois partiels économiques et optimisés.</p>
+        <a href="#contact" class="lnk">En savoir plus →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⚡</div>
+        <h3>Fret express</h3>
+        <p>Livraison express pour vos envois urgents, délais garantis et traitement prioritaire.</p>
+        <a href="#contact" class="lnk">En savoir plus →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌍</div>
+        <h3>Transport international</h3>
+        <p>Solutions transfrontalières couvrant 10+ pays européens, expertise douanière incluse.</p>
+        <a href="#contact" class="lnk">En savoir plus →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤝</div>
+        <h3>Affrètement</h3>
+        <p>Gestion complète du fret, de la réservation à la livraison finale, avec visibilité totale.</p>
+        <a href="#contact" class="lnk">En savoir plus →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="wrap why-inner">
+    <div class="why-visual">
+      <!-- Illustration temporaire — à remplacer par une vraie photo de flotte -->
+      <svg viewBox="0 0 400 400" width="100%" height="100%">
+        <rect width="400" height="400" fill="none"/>
+        <path d="M0 300 L400 300" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+        <rect x="90" y="220" width="140" height="80" rx="10" fill="#0a1420" stroke="#d4006e" stroke-width="2"/>
+        <rect x="230" y="240" width="55" height="60" rx="8" fill="#d4006e"/>
+        <circle cx="130" cy="304" r="14" fill="#0a1420" stroke="#fff" stroke-width="3"/>
+        <circle cx="250" cy="304" r="14" fill="#0a1420" stroke="#fff" stroke-width="3"/>
+        <text x="140" y="266" fill="#fff" font-family="Space Grotesk" font-size="20" font-weight="700">IBK</text>
+      </svg>
+      <div class="why-badge">
+        <div class="num">500+</div>
+        <div class="lbl">Véhicules via notre<br>réseau partenaire</div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Pourquoi nous choisir</div>
+      <h2 style="font-size:32px; color:var(--navy); margin-bottom:14px;">Le partenaire en qui vous pouvez avoir confiance</h2>
+      <p style="color:var(--muted); font-size:15px; margin-bottom:34px;">Nous combinons une solide expertise logistique et des outils modernes pour offrir un service fiable à travers l'Europe.</p>
+      <div class="feat-list">
+        <div class="feat"><span class="ic">👥</span><div><h4>Équipe expérimentée</h4><p>Plus de 20 ans d'expérience cumulée dans la logistique et le transport routier.</p></div></div>
+        <div class="feat"><span class="ic">🚚</span><div><h4>Réseau de transporteurs</h4><p>Un large réseau de sous-traitants vérifiés couvrant toute l'Europe.</p></div></div>
+        <div class="feat"><span class="ic">📍</span><div><h4>Suivi en temps réel</h4><p>Visibilité en direct sur vos expéditions, à chaque étape.</p></div></div>
+        <div class="feat"><span class="ic">💶</span><div><h4>Tarifs compétitifs</h4><p>Tarification transparente, alignée sur les indices du marché.</p></div></div>
+        <div class="feat"><span class="ic">⏱</span><div><h4>Livraison rapide</h4><p>Trajets optimisés et options express pour vos envois urgents.</p></div></div>
+        <div class="feat"><span class="ic">🎯</span><div><h4>Satisfaction client</h4><p>Un interlocuteur dédié pour chaque client, à chaque mission.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IBK CONNECT -->
+<section class="connect" id="connect">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="color:#ff5fac;">Rejoignez-nous</div>
+      <h2>IBK Connect — rejoignez notre réseau logistique européen</h2>
+      <p>Que vous soyez chauffeur, transporteur, ou chargeur — nous avons un partenariat adapté à votre profil.</p>
+    </div>
+    <div class="connect-grid">
+      <div class="connect-card">
+        <div class="connect-ic">🚗</div>
+        <h3>Vous êtes transporteur ?</h3>
+        <p>Rejoignez notre réseau de sous-traitants et accédez à un flux régulier de missions à travers l'Europe.</p>
+        <a href="#contact" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Devenir partenaire →</a>
+      </div>
+      <div class="connect-card">
+        <div class="connect-ic">🤝</div>
+        <h3>Vous êtes commissionnaire ?</h3>
+        <p>Développez votre réseau — accédez à notre capacité et à notre couverture européenne.</p>
+        <a href="#contact" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Nous rejoindre →</a>
+      </div>
+      <div class="connect-card">
+        <div class="connect-ic">📦</div>
+        <h3>Vous êtes chargeur ?</h3>
+        <p>Vous cherchez un partenaire transport fiable ? Obtenez une solution logistique sur mesure.</p>
+        <a href="#contact" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Être recontacté →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="services">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">IBK Euro Transport</div>
+      <h2>Nos réalisations & partenariats</h2>
+      <p>Découvrez nos principales réalisations, projets en cours et opportunités de partenariat.</p>
+    </div>
+    <div class="ach-grid">
+      <div class="ach-card"><div class="ach-tag">Partenariat</div><h4>Transporteurs</h4><p>Nous recherchons des transporteurs fiables à travers l'Europe pour rejoindre notre réseau.</p></div>
+      <div class="ach-card"><div class="ach-tag">Partenariat</div><h4>Commissionnaires</h4><p>Élargissez votre offre de service en vous associant à IBK Euro Transport.</p></div>
+      <div class="ach-card"><div class="ach-tag">Partenariat</div><h4>Chargeurs & exportateurs</h4><p>Des solutions de transport sur mesure pour vos marchandises.</p></div>
+      <div class="ach-card"><div class="ach-tag">Partenariat</div><h4>Industriels</h4><p>Solutions de transport et supply chain pour entreprises industrielles.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage">
+  <div class="wrap cov-inner">
+    <div>
+      <div class="eyebrow" style="color:#ff5fac;">Notre réseau</div>
+      <h2 style="font-size:32px; margin-bottom:14px;">Couvrir l'Europe</h2>
+      <p style="color:rgba(255,255,255,.65); font-size:15px; margin-bottom:24px;">Avec un réseau couvrant 10+ pays, nous livrons vos marchandises à travers l'Europe — rapidement, de façon fiable, et avec une visibilité totale.</p>
+      <div class="cov-hq">
+        <div class="tag">Siège social</div>
+        <div class="place">Garges-lès-Gonesse, France</div>
+      </div>
+    </div>
+    <div class="cov-list">
+      <div>🇫🇷 France</div><div>🇪🇸 Espagne</div>
+      <div>🇮🇹 Italie</div><div>🇩🇪 Allemagne</div>
+      <div>🇵🇹 Portugal</div><div>🇬🇧 Royaume-Uni</div>
+      <div>🇳🇱 Pays-Bas</div><div>🇧🇪 Belgique</div>
+      <div>🇵🇱 Pologne</div><div>🇦🇹 Autriche</div>
+      <div>🇷🇴 Roumanie</div><div>🇨🇿 Rép. tchèque</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions fréquentes</h2>
+      <p>Tout ce qu'il faut savoir sur nos services de transport et logistique.</p>
+    </div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">Quels types de transport proposez-vous ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Nous proposons du transport FTL (camion complet), LTL (groupage), express, international, ainsi que de l'affrètement complet de bout en bout.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Sous combien de temps puis-je obtenir un devis ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Notre équipe répond sous 24h avec une solution logistique adaptée à votre besoin.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Proposez-vous un suivi en temps réel ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Oui, chaque mission est suivie et vous pouvez obtenir un point d'avancement à tout moment auprès de votre interlocuteur dédié.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quels pays couvrez-vous ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Notre réseau couvre plus de 10 pays européens, avec la France comme point d'ancrage principal.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quels types de marchandises transportez-vous ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Marchandises générales, palettes, colis, et solutions dédiées selon votre secteur d'activité.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Vos services sont-ils assurés ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Oui, chaque mission est couverte par une assurance transport adaptée.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="final-cta">
+      <div>
+        <h2>Besoin d'un partenaire transport ?</h2>
+        <p>Obtenez votre devis gratuit dès aujourd'hui — réponse sous 24h.</p>
+      </div>
+      <a href="tel:+33185763070" class="btn btn-navy">01 85 76 30 70</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <span class="logo-mark">IBK</span>
+          <span style="color:#fff; font-family:'Space Grotesk'; font-weight:700; font-size:16px;">IBK EURO TRANSPORT</span>
+        </div>
+        <p>IBK Euro Transport est une société de transport, affrètement et logistique intervenant à travers l'Europe.</p>
+        <p style="margin-top:14px;">📞 <a href="tel:+33185763070">01 85 76 30 70</a></p>
+        <p style="margin-top:6px;">✉️ contact@ibkeurotransport.eu
+          <span class="placeholder-note">⚠️ e-mail temporaire, en attente du nom de domaine</span>
+        </p>
+        <p style="margin-top:10px;">17-19 Boulevard de la Muette<br>95140 Garges-lès-Gonesse, France</p>
+      </div>
+      <div>
+        <h5>Société</h5>
+        <ul>
+          <li><a href="#why">À propos</a></li>
+          <li><a href="#careers">Carrières</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Transport FTL</a></li>
+          <li><a href="#services">Transport LTL</a></li>
+          <li><a href="#services">Fret express</a></li>
+          <li><a href="#services">Affrètement</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Newsletter</h5>
+        <p style="margin-bottom:12px;">Recevez nos actualités logistiques.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Votre e-mail" style="flex:1; min-width:0; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.05); color:#fff; font-size:13px;">
+        </div>
+        <button class="btn btn-pink" style="margin-top:10px; width:100%; justify-content:center;">S'abonner</button>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 IBK Euro Transport. Tous droits réservés.</div>
+      <div>
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">CGV</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
