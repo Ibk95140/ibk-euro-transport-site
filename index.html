@@ -54,12 +54,53 @@
   section{padding:88px 0;}
   @media (max-width:768px){ section{padding:56px 0;} }
 
-  /* ===== TOPBAR ===== */
-  .topbar{background:var(--navy); color:rgba(255,255,255,.72); font-size:12.5px;}
-  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding:9px 24px; flex-wrap:wrap; gap:6px;}
-  .topbar a{color:#fff;}
-  .topbar-left{display:flex; gap:22px; flex-wrap:wrap;}
-  .topbar-item{display:flex; align-items:center; gap:6px;}
+  /* ===== TOPBAR TICKER ===== */
+  .topbar{background:var(--navy); color:rgba(255,255,255,.72); font-size:12.5px; overflow:hidden; position:relative;}
+  .topbar::before, .topbar::after{
+    content:''; position:absolute; top:0; bottom:0; width:40px; z-index:2; pointer-events:none;
+  }
+  .topbar::before{left:0; background:linear-gradient(90deg, var(--navy), transparent);}
+  .topbar::after{right:0; background:linear-gradient(270deg, var(--navy), transparent);}
+  .ticker-track{
+    display:flex; align-items:center; white-space:nowrap;
+    animation:ticker-scroll 38s linear infinite;
+    width:max-content;
+  }
+  .topbar:hover .ticker-track{animation-play-state:paused;}
+  .ticker-item{padding:9px 30px; display:inline-flex; align-items:center; gap:8px; flex-shrink:0;}
+  .ticker-item .sep{color:var(--pink); font-weight:700;}
+  @keyframes ticker-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;}
+  }
+
+  /* ===== LANG DROPDOWN ===== */
+  .lang-wrap{position:relative;}
+  .lang-btn{
+    display:flex; align-items:center; gap:6px; background:none; border:1px solid var(--line);
+    border-radius:8px; padding:8px 12px; font-size:13px; font-weight:600; color:var(--ink);
+    cursor:pointer; font-family:'Inter';
+  }
+  .lang-btn:hover{border-color:var(--pink); color:var(--pink);}
+  .lang-btn .chev{font-size:10px; transition:transform .15s;}
+  .lang-wrap.open .chev{transform:rotate(180deg);}
+  .lang-menu{
+    position:absolute; top:calc(100% + 8px); right:0; background:#fff; border:1px solid var(--line);
+    border-radius:10px; box-shadow:0 14px 34px rgba(13,27,42,.14); overflow:hidden; min-width:160px;
+    display:none; z-index:60;
+  }
+  .lang-wrap.open .lang-menu{display:block;}
+  .lang-opt{
+    display:flex; align-items:center; gap:10px; padding:11px 14px; font-size:13px; font-weight:600;
+    color:var(--ink); cursor:pointer; border:none; background:none; width:100%; text-align:left; font-family:'Inter';
+  }
+  .lang-opt:hover{background:var(--pink-light); color:var(--pink);}
+  .lang-opt.active{color:var(--pink); background:var(--pink-light);}
+  .lang-opt .flag{font-size:15px;}
+  .lang-opt .soon{margin-left:auto; font-size:10px; text-transform:uppercase; color:var(--muted); font-weight:700;}
 
   /* ===== HEADER ===== */
   header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line);}
@@ -261,16 +302,28 @@
 </head>
 <body>
 
-<!-- TOPBAR -->
+<!-- TOPBAR TICKER -->
 <div class="topbar">
-  <div class="wrap">
-    <div class="topbar-left">
-      <span class="topbar-item">📞 <a href="tel:+33185763070">01 85 76 30 70</a></span>
-      <span class="topbar-item">🕗 Lun–Sam : 8h00–18h00</span>
-    </div>
-    <div class="topbar-left">
-      <a href="#careers">Carrières</a>
-    </div>
+  <div class="ticker-track" id="tickerTrack">
+    <!-- Le contenu est dupliqué une fois en JS pour un défilement en boucle sans coupure -->
+    <span class="ticker-item">📞 <a href="tel:+33185763070" style="color:#fff;">01 85 76 30 70</a></span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🕗 Lun–Sam : 8h00–18h00</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🌍 Réseau couvrant 10+ pays européens</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">✅ 99% de livraisons à l'heure</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🚛 50+ transporteurs partenaires dans notre réseau</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🚗 Transporteurs — rejoignez notre réseau de sous-traitants</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🤝 Commissionnaires — développons ensemble notre couverture européenne</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">📦 Chargeurs — obtenez un devis sur mesure sous 24h</span>
+    <span class="sep">•</span>
+    <span class="ticker-item"><a href="#careers" style="color:#fff;">💼 Carrières — nous recrutons</a></span>
+    <span class="sep">•</span>
   </div>
 </div>
 
@@ -289,6 +342,13 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-right">
+      <div class="lang-wrap" id="langWrap">
+        <button class="lang-btn" id="langBtn">🌐 FR <span class="chev">▾</span></button>
+        <div class="lang-menu">
+          <button class="lang-opt active" data-lang="fr"><span class="flag">🇫🇷</span> Français</button>
+          <button class="lang-opt" data-lang="en"><span class="flag">🇬🇧</span> English <span class="soon">Bientôt</span></button>
+        </div>
+      </div>
       <a href="#contact" class="btn btn-pink">Demander un devis</a>
       <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -607,6 +667,33 @@
         item.classList.add('open');
         answer.style.maxHeight = answer.scrollHeight + 'px';
       }
+    });
+  });
+
+  // Bandeau défilant : on duplique une fois le contenu pour une boucle
+  // continue et sans coupure visible (l'animation défile de 0 à -50%,
+  // exactement la largeur d'une copie).
+  var track = document.getElementById('tickerTrack');
+  if(track){ track.innerHTML += track.innerHTML; }
+
+  // Menu déroulant de langue
+  var langWrap = document.getElementById('langWrap');
+  var langBtn = document.getElementById('langBtn');
+  langBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    langWrap.classList.toggle('open');
+  });
+  document.addEventListener('click', function(){ langWrap.classList.remove('open'); });
+  document.querySelectorAll('.lang-opt').forEach(function(opt){
+    opt.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(opt.dataset.lang === 'en'){
+        alert("La version anglaise du site arrive bientôt !");
+        return;
+      }
+      document.querySelectorAll('.lang-opt').forEach(function(o){ o.classList.remove('active'); });
+      opt.classList.add('active');
+      langWrap.classList.remove('open');
     });
   });
 </script>
