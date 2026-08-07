@@ -256,6 +256,13 @@
   .cov-hq{background:rgba(212,0,110,.12); border:1px solid rgba(212,0,110,.35); border-radius:12px; padding:20px; margin-bottom:22px;}
   .cov-hq .tag{font-size:11px; font-weight:700; text-transform:uppercase; color:var(--pink); letter-spacing:.05em;}
   .cov-hq .place{font-family:'Space Grotesk'; font-weight:700; font-size:19px; margin-top:4px;}
+  .map-frame{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:20px;}
+  .europe-map{width:100%; height:auto; max-height:420px;}
+  .europe-map .country path{stroke:rgba(13,27,42,.5); stroke-width:1;}
+  .europe-map .country.ctx path{fill:rgba(255,255,255,.08);}
+  .europe-map .country.active path{fill:var(--pink); transition:fill .15s;}
+  .europe-map .country.active:hover path{fill:#ff4fa0;}
+  .europe-map .country title{pointer-events:none;}
 
   /* ===== FAQ ===== */
   .faq-list{max-width:760px; margin:0 auto;}
@@ -310,7 +317,7 @@
     <span class="sep">•</span>
     <span class="ticker-item">🕗 Lun–Sam : 8h00–18h00</span>
     <span class="sep">•</span>
-    <span class="ticker-item">🌍 Réseau couvrant 10+ pays européens</span>
+    <span class="ticker-item">🌍 Réseau couvrant 9 pays européens</span>
     <span class="sep">•</span>
     <span class="ticker-item">✅ 99% de livraisons à l'heure</span>
     <span class="sep">•</span>
@@ -374,16 +381,7 @@
     </div>
     <div class="hero-visual">
       <div class="route-card">
-        <!-- Illustration temporaire — à remplacer par une vraie photo -->
-        <svg viewBox="0 0 400 260" fill="none">
-          <path d="M10 210 Q100 140 200 170 T390 100" stroke="#d4006e" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
-          <circle cx="10" cy="210" r="6" fill="#d4006e"/>
-          <circle cx="390" cy="100" r="6" fill="#fff"/>
-          <rect x="150" y="150" width="70" height="40" rx="6" fill="#1a3350" stroke="#d4006e" stroke-width="1.5"/>
-          <rect x="212" y="160" width="26" height="30" rx="4" fill="#d4006e"/>
-          <circle cx="168" cy="192" r="7" fill="#0a1420" stroke="#fff" stroke-width="2"/>
-          <circle cx="222" cy="192" r="7" fill="#0a1420" stroke="#fff" stroke-width="2"/>
-        </svg>
+        <img src="images/camion-1.jpg" alt="Camion IBK Euro Afrique" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <div class="float-card float-1"><span class="dot">⏱</span> 99% livraisons à l'heure</div>
       <div class="float-card float-2"><span class="dot">🎧</span> Support 24/7</div>
@@ -394,7 +392,7 @@
 <!-- STATS -->
 <div class="stats">
   <div class="wrap stats-grid">
-    <div><div class="stat-num">10+</div><div class="stat-lbl">Pays couverts</div></div>
+    <div><div class="stat-num">9</div><div class="stat-lbl">Pays couverts</div></div>
     <div><div class="stat-num">99%</div><div class="stat-lbl">Livraisons à l'heure</div></div>
     <div><div class="stat-num">50+</div><div class="stat-lbl">Transporteurs partenaires</div></div>
     <div><div class="stat-num">24/7</div><div class="stat-lbl">Support dédié</div></div>
@@ -431,7 +429,7 @@
       <div class="svc-card">
         <div class="svc-icon">🌍</div>
         <h3>Transport international</h3>
-        <p>Solutions transfrontalières couvrant 10+ pays européens, expertise douanière incluse.</p>
+        <p>Solutions transfrontalières couvrant 9 pays européens, expertise douanière incluse.</p>
         <a href="#contact" class="lnk">En savoir plus →</a>
       </div>
       <div class="svc-card">
@@ -448,16 +446,7 @@
 <section id="why">
   <div class="wrap why-inner">
     <div class="why-visual">
-      <!-- Illustration temporaire — à remplacer par une vraie photo de flotte -->
-      <svg viewBox="0 0 400 400" width="100%" height="100%">
-        <rect width="400" height="400" fill="none"/>
-        <path d="M0 300 L400 300" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
-        <rect x="90" y="220" width="140" height="80" rx="10" fill="#0a1420" stroke="#d4006e" stroke-width="2"/>
-        <rect x="230" y="240" width="55" height="60" rx="8" fill="#d4006e"/>
-        <circle cx="130" cy="304" r="14" fill="#0a1420" stroke="#fff" stroke-width="3"/>
-        <circle cx="250" cy="304" r="14" fill="#0a1420" stroke="#fff" stroke-width="3"/>
-        <text x="140" y="266" fill="#fff" font-family="Space Grotesk" font-size="20" font-weight="700">IBK</text>
-      </svg>
+      <img src="images/camion-2.jpg" alt="Flotte de camions IBK Euro Afrique" style="width:100%; height:100%; object-fit:cover;">
       <div class="why-badge">
         <div class="num">500+</div>
         <div class="lbl">Véhicules via notre<br>réseau partenaire</div>
@@ -533,19 +522,37 @@
     <div>
       <div class="eyebrow" style="color:#ff5fac;">Notre réseau</div>
       <h2 style="font-size:32px; margin-bottom:14px;">Couvrir l'Europe</h2>
-      <p style="color:rgba(255,255,255,.65); font-size:15px; margin-bottom:24px;">Avec un réseau couvrant 10+ pays, nous livrons vos marchandises à travers l'Europe — rapidement, de façon fiable, et avec une visibilité totale.</p>
+      <p style="color:rgba(255,255,255,.65); font-size:15px; margin-bottom:24px;">Nous opérons dans 9 pays européens, avec la France comme point d'ancrage principal — rapidement, de façon fiable, et avec une visibilité totale.</p>
       <div class="cov-hq">
         <div class="tag">Siège social</div>
         <div class="place">Garges-lès-Gonesse, France</div>
       </div>
+      <div class="cov-list">
+        <div>🇫🇷 France</div><div>🇩🇪 Allemagne</div>
+        <div>🇧🇪 Belgique</div><div>🇦🇹 Autriche</div>
+        <div>🇳🇱 Pays-Bas</div><div>🇨🇭 Suisse</div>
+        <div>🇪🇸 Espagne</div><div>🇵🇱 Pologne</div>
+        <div>🇮🇹 Italie</div>
+      </div>
     </div>
-    <div class="cov-list">
-      <div>🇫🇷 France</div><div>🇪🇸 Espagne</div>
-      <div>🇮🇹 Italie</div><div>🇩🇪 Allemagne</div>
-      <div>🇵🇹 Portugal</div><div>🇬🇧 Royaume-Uni</div>
-      <div>🇳🇱 Pays-Bas</div><div>🇧🇪 Belgique</div>
-      <div>🇵🇱 Pologne</div><div>🇦🇹 Autriche</div>
-      <div>🇷🇴 Roumanie</div><div>🇨🇿 Rép. tchèque</div>
+    <div class="map-frame">
+      <svg viewBox="0 0 400 420" class="europe-map">
+        <!-- Carte schématique — silhouettes simplifiées à des fins d'illustration, positionnées et proportionnées relativement les unes aux autres, mais non issues d'un tracé cartographique officiel. -->
+        <g class="country ctx"><path d="M16,80 L34,72 L40,90 L36,110 L24,118 L12,105 Z"/><title>Irlande</title></g>
+        <g class="country ctx"><path d="M46,58 L71,52 L84,60 L88,85 L78,100 L84,115 L74,135 L58,140 L48,120 L54,100 L44,85 Z"/><title>Royaume-Uni</title></g>
+        <g class="country ctx"><path d="M32,288 L48,285 L52,320 L46,362 L34,360 L30,320 Z"/><title>Portugal</title></g>
+        <g class="country active"><path d="M54,268 L151,262 L158,300 L146,340 L116,368 L76,365 L56,335 L51,300 Z"/><title>Espagne</title></g>
+        <g class="country active"><path d="M96,175 L126,142 L161,148 L188,165 L184,205 L196,225 L174,260 L141,268 L104,245 L91,205 Z"/><title>France</title></g>
+        <g class="country active"><path d="M176,132 L198,128 L202,148 L184,155 L174,145 Z"/><title>Belgique</title></g>
+        <g class="country active"><path d="M188,100 L208,96 L216,112 L210,132 L192,130 L184,115 Z"/><title>Pays-Bas</title></g>
+        <g class="country ctx"><path d="M218,58 L236,55 L242,72 L232,92 L220,88 L214,70 Z"/><title>Danemark</title></g>
+        <g class="country active"><path d="M200,105 L236,98 L266,108 L278,140 L272,178 L281,205 L258,222 L228,220 L206,205 L194,175 L202,140 Z"/><title>Allemagne</title></g>
+        <g class="country active"><path d="M196,224 L222,220 L232,236 L220,250 L200,246 Z"/><title>Suisse</title></g>
+        <g class="country active"><path d="M230,224 L264,220 L290,232 L284,252 L252,256 L228,244 Z"/><title>Autriche</title></g>
+        <g class="country ctx"><path d="M246,186 L278,182 L286,200 L274,218 L250,216 L242,200 Z"/><title>République tchèque</title></g>
+        <g class="country active"><path d="M280,122 L326,118 L360,140 L354,178 L326,205 L292,208 L278,182 L284,150 Z"/><title>Pologne</title></g>
+        <g class="country active"><path d="M208,252 L234,248 L254,255 L248,278 L260,300 L254,330 L264,355 L250,388 L240,384 L238,350 L226,320 L232,295 L214,278 Z"/><title>Italie</title></g>
+      </svg>
     </div>
   </div>
 </section>
