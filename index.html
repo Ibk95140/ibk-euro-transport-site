@@ -112,6 +112,24 @@
   nav.main-nav a{font-size:14px; font-weight:600; color:var(--ink);}
   nav.main-nav a:hover{color:var(--pink);}
   .nav-pill{background:var(--pink-light); color:var(--pink) !important; padding:7px 14px; border-radius:20px;}
+  .nav-dropdown{position:relative;}
+  .nav-drop-btn{
+    display:flex; align-items:center; gap:5px; background:none; border:none; cursor:pointer;
+    font-size:14px; font-weight:600; color:var(--ink); font-family:'Inter'; padding:0;
+  }
+  .nav-drop-btn:hover{color:var(--pink);}
+  .nav-drop-btn.nav-pill{background:var(--pink-light); color:var(--pink); padding:7px 14px; border-radius:20px;}
+  .nav-drop-btn .chev{font-size:9px; transition:transform .15s;}
+  .nav-dropdown:hover .nav-drop-btn .chev{transform:rotate(180deg);}
+  .nav-drop-menu{
+    position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%);
+    background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 16px 36px rgba(13,27,42,.14);
+    padding:8px; min-width:220px; opacity:0; visibility:hidden; transition:opacity .15s, visibility .15s;
+    z-index:60;
+  }
+  .nav-dropdown:hover .nav-drop-menu{opacity:1; visibility:visible;}
+  .nav-drop-menu a{display:block; padding:9px 12px; border-radius:8px; font-size:13px; font-weight:500; white-space:nowrap;}
+  .nav-drop-menu a:hover{background:var(--pink-light); color:var(--pink);}
   .header-right{display:flex; align-items:center; gap:18px;}
   .burger{display:none; flex-direction:column; gap:4px; cursor:pointer; background:none; border:none;}
   .burger span{width:22px; height:2px; background:var(--navy);}
@@ -345,9 +363,26 @@
     </a>
     <nav class="main-nav">
       <a href="#accueil">Accueil</a>
-      <a href="#services">Services</a>
       <a href="#why">À propos</a>
-      <a href="#connect" class="nav-pill">IBK Connect</a>
+      <div class="nav-dropdown">
+        <button class="nav-drop-btn">Services <span class="chev">▾</span></button>
+        <div class="nav-drop-menu">
+          <a href="#services">🚛 Transport FTL</a>
+          <a href="#services">📦 Transport LTL</a>
+          <a href="#services">⚡ Fret express</a>
+          <a href="#services">🌍 Transport international</a>
+          <a href="#services">🤝 Affrètement</a>
+        </div>
+      </div>
+      <a href="#careers">Carrières</a>
+      <div class="nav-dropdown">
+        <button class="nav-drop-btn nav-pill">IBK Connect <span class="chev">▾</span></button>
+        <div class="nav-drop-menu">
+          <a href="#connect">🚗 Vous êtes transporteur</a>
+          <a href="#connect">🤝 Vous êtes commissionnaire</a>
+          <a href="#connect">📦 Vous êtes chargeur</a>
+        </div>
+      </div>
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-right">
@@ -611,6 +646,20 @@
         <button class="faq-q">Vos services sont-ils assurés ? <span class="plus">+</span></button>
         <div class="faq-a"><p>Oui, chaque mission est couverte par une assurance transport adaptée.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARRIÈRES -->
+<section id="careers" class="services">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Rejoindre l'équipe</div>
+      <h2>Carrières chez IBK Euro Transport</h2>
+      <p>Nous recrutons régulièrement affréteurs, commerciaux et exploitants pour accompagner notre croissance en Europe. Envoyez-nous votre candidature, nous revenons vers vous rapidement.</p>
+    </div>
+    <div style="text-align:center;">
+      <a href="mailto:contact@ibkeurotransport.eu" class="btn btn-pink">Envoyer une candidature spontanée</a>
     </div>
   </div>
 </section>
