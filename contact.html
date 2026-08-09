@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
     --navy:#0d1b2a;
@@ -498,7 +499,7 @@
     <div class="form-card">
       <h3 style="font-size:19px; color:var(--navy); margin-bottom:6px;">Envoyez-nous un message</h3>
       <p style="font-size:13.5px; color:var(--muted); margin-bottom:24px;">Remplissez ce formulaire — il ouvrira votre messagerie avec un e-mail pré-rempli à nous envoyer.</p>
-      <form id="contactForm" onsubmit="event.preventDefault(); sendViaMailto(this, 'Nouvelle demande de contact — Site IBK Euro Transport', 'contact@ibkeurotransport.eu');">
+      <form id="contactForm" onsubmit="event.preventDefault(); submitDemande(this, 'contact', {nom:'Nom', entreprise:'Société', email:'E-mail', telephone:'Téléphone', profil:'Profil', message:'Message'}, 'Nouvelle demande de contact — Site IBK Euro Transport', 'contact@ibkeurotransport.eu');">
         <div class="f-row">
           <div class="f-field"><label>Nom complet *</label><input class="f-input" name="Nom" required></div>
           <div class="f-field"><label>Société</label><input class="f-input" name="Société"></div>
@@ -624,8 +625,8 @@
     });
   });
   // Envoi générique d'un formulaire via mailto : construit un e-mail
-  // pré-rempli à partir des champs du formulaire (solution simple, sans
-  // service tiers, en attendant une éventuelle connexion directe au TMS).
+  // pré-rempli à partir des champs du formulaire — utilisé uniquement en
+  // secours si l'écriture directe dans le TMS échoue (ex : coupure réseau).
   function sendViaMailto(formEl, subject, toEmail){
     var data = new FormData(formEl);
     var lines = [];
@@ -635,6 +636,64 @@
     var body = lines.join('\n');
     var mailto = 'mailto:' + toEmail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     window.location.href = mailto;
+  }
+
+  // ===== Connexion directe au TMS (table demandes_devis) =====
+  // Le site dépose uniquement des demandes (jamais de lecture), via la clé
+  // publique — sans risque, la sécurité réelle est assurée côté serveur par
+  // les règles RLS de la table (le site ne peut qu'insérer, jamais lire ou
+  // modifier les données existantes).
+  var IBK_SUPABASE_URL = 'https://fhecosnfbufchvuiufpe.supabase.co';
+  var IBK_SUPABASE_KEY = 'sb_publishable_tzTAe1wks12nr7TgKUtP9Q_1zfcVpjz';
+  var ibkSb = (typeof supabase !== 'undefined')
+    ? supabase.createClient(IBK_SUPABASE_URL, IBK_SUPABASE_KEY)
+    : null;
+
+  function showFormSuccess(formEl, message){
+    var card = formEl.closest('.form-card');
+    if (!card) { formEl.style.display = 'none'; return; }
+    card.innerHTML =
+      '<div style="text-align:center; padding:20px 0;">' +
+      '<div style="font-size:38px; margin-bottom:14px;">✅</div>' +
+      '<h3 style="font-size:18px; color:var(--navy); margin-bottom:8px;">Demande envoyée !</h3>' +
+      '<p style="font-size:13.5px; color:var(--muted);">' + message + '</p>' +
+      '</div>';
+  }
+
+  // typeDemande : 'contact' | 'transporteur' | 'commissionnaire' | 'chargeur'
+  // fieldMap : correspondance entre les colonnes de la table et les noms
+  // des champs du formulaire (name="...").
+  async function submitDemande(formEl, typeDemande, fieldMap, fallbackSubject, fallbackEmail){
+    var submitBtn = formEl.querySelector('button[type="submit"]');
+    var originalLabel = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Envoi en cours…'; }
+
+    var data = new FormData(formEl);
+    var raw = {};
+    for (var pair of data.entries()) raw[pair[0]] = pair[1];
+
+    var payload = {
+      type_demande: typeDemande,
+      nom: raw[fieldMap.nom] || null,
+      entreprise: raw[fieldMap.entreprise] || null,
+      email: raw[fieldMap.email] || null,
+      telephone: raw[fieldMap.telephone] || null,
+      siret: raw[fieldMap.siret] || null,
+      profil: raw[fieldMap.profil] || null,
+      message: raw[fieldMap.message] || null,
+      details: raw,
+    };
+
+    try {
+      if (!ibkSb) throw new Error('Client Supabase non disponible');
+      var res = await ibkSb.from('demandes_devis').insert(payload);
+      if (res.error) throw res.error;
+      showFormSuccess(formEl, "Merci ! Votre demande a bien été transmise à notre équipe, qui revient vers vous sous 24h.");
+    } catch (e) {
+      console.error('IBK — erreur envoi demande, secours par e-mail :', e);
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
+      sendViaMailto(formEl, fallbackSubject, fallbackEmail);
+    }
   }
 </script>
 
