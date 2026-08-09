@@ -519,7 +519,28 @@
             <option>Autre</option>
           </select>
         </div>
-        <div class="f-field"><label>Message *</label><textarea class="f-textarea" name="Message" required></textarea></div>
+
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--muted); margin:22px 0 14px; padding-top:18px; border-top:1px solid var(--line);">Détails du transport (si vous avez un besoin de transport)</div>
+        <div class="f-row">
+          <div class="f-field"><label>Pays de départ</label><input class="f-input" name="PaysDepart" placeholder="France"></div>
+          <div class="f-field"><label>Code postal de départ</label><input class="f-input" name="CpDepart" placeholder="ex : 95140"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-field"><label>Pays d'arrivée</label><input class="f-input" name="PaysArrivee" placeholder="France"></div>
+          <div class="f-field"><label>Code postal d'arrivée</label><input class="f-input" name="CpArrivee" placeholder="ex : 69000"></div>
+        </div>
+        <div class="f-field">
+          <label>Type de camion souhaité</label>
+          <select class="f-select" name="TypeCamion">
+            <option value="">Non précisé</option>
+            <option>Tautliner</option>
+            <option>Mega Tautliner</option>
+            <option>Box</option>
+            <option>Frigo</option>
+          </select>
+        </div>
+
+        <div class="f-field"><label>Message *</label><textarea class="f-textarea" name="Message" required placeholder="Nature de la marchandise, volumes, fréquence, contraintes particulières..."></textarea></div>
         <button type="submit" class="btn btn-pink f-submit">Envoyer le message →</button>
         <p class="form-note">* Champs obligatoires. En cliquant sur "Envoyer", votre logiciel de messagerie s'ouvrira avec le message pré-rempli — il ne reste plus qu'à cliquer sur "Envoyer" dedans.</p>
       </form>
@@ -681,6 +702,14 @@
       siret: raw[fieldMap.siret] || null,
       profil: raw[fieldMap.profil] || null,
       message: raw[fieldMap.message] || null,
+      // Détails du trajet (formulaire Contact uniquement, quand renseignés) —
+      // permettent à l'équipe d'avoir une base fixe pour calculer le devis
+      // dans le module Cotation du TMS.
+      pays_depart: raw['PaysDepart'] || null,
+      cp_depart: raw['CpDepart'] || null,
+      pays_arrivee: raw['PaysArrivee'] || null,
+      cp_arrivee: raw['CpArrivee'] || null,
+      type_camion: raw['TypeCamion'] || null,
       details: raw,
     };
 
