@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>IBK Euro Transport — Impulsando Europa, juntos</title>
-<meta name="description" content="Soluciones de transporte, tránsito de mercancías y logística fiables en toda Europa. FTL, LTL, express, transporte internacional." />
+<title>Contacto — IBK Euro Transport</title>
+<meta name="description" content="Contacte con IBK Euro Transport para cualquier solicitud de transporte, tránsito de mercancías o colaboración." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
     --navy:#0d1b2a;
@@ -473,9 +474,9 @@
       <div class="lang-wrap" id="langWrap">
         <button class="lang-btn" id="langBtn">🌐 ES <span class="chev">▾</span></button>
         <div class="lang-menu">
-          <a class="lang-opt" href="../index.html"><span class="flag">🇫🇷</span> Français</a>
-          <a class="lang-opt" href="../en/index.html"><span class="flag">🇬🇧</span> English</a>
-          <a class="lang-opt" href="../de/index.html"><span class="flag">🇩🇪</span> Deutsch</a>
+          <a class="lang-opt" href="../contact.html"><span class="flag">🇫🇷</span> Français</a>
+          <a class="lang-opt" href="../en/contact.html"><span class="flag">🇬🇧</span> English</a>
+          <a class="lang-opt" href="../de/contact.html"><span class="flag">🇩🇪</span> Deutsch</a>
           <button class="lang-opt active" data-lang="es"><span class="flag">🇪🇸</span> Español</button>
           <button class="lang-opt" data-lang="it"><span class="flag">🇮🇹</span> Italiano <span class="soon">Pronto</span></button>
           <button class="lang-opt" data-lang="nl"><span class="flag">🇳🇱</span> Nederlands <span class="soon">Pronto</span></button>
@@ -489,279 +490,84 @@
 </header>
 
 
-<!-- HERO -->
-<section class="hero" id="home" style="padding-top:80px;">
-  <div class="wrap hero-inner">
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Inicio</a> / Contacto</div>
+    <h1>Contáctenos</h1>
+    <p>¿Una pregunta, una necesidad de transporte, una solicitud de colaboración? Nuestro equipo responde en 24 horas.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap contact-grid">
     <div>
-      <div class="eyebrow" style="color:#ff5fac;">Socio de transporte de confianza en Europa</div>
-      <h1>Impulsando<br>Europa, <span>juntos</span></h1>
-      <p class="lead">Soluciones de transporte, tránsito de mercancías y logística fiables en toda Europa. Desde cargas completas hasta grupaje, desde entregas express hasta el tránsito de mercancías — impulsamos su negocio.</p>
-      <div class="hero-ctas">
-        <a href="contact.html" class="btn btn-pink">Solicitar presupuesto →</a>
-        <a href="contact.html" class="btn btn-outline">Contáctenos</a>
+      <div class="contact-info-card">
+        <div class="ic">📞</div>
+        <h4>Teléfono</h4>
+        <p><a href="tel:+33185763070">+33 1 85 76 30 70</a><br>Lun–Sáb: 8:00–18:00</p>
       </div>
-      <div class="hero-badges">
-        <div class="hero-badge"><span class="num">🇪🇺</span><span class="lbl">Red<br>europea</span></div>
-        <div class="hero-badge"><span class="num">✓</span><span class="lbl">Asegurado y<br>certificado</span></div>
-        <div class="hero-badge"><span class="num">24/7</span><span class="lbl">Soporte<br>dedicado</span></div>
+      <div class="contact-info-card">
+        <div class="ic">✉️</div>
+        <h4>Correo electrónico</h4>
+        <p>contact@ibkeurotransport.eu
+          <span class="placeholder-note" style="display:block; margin-top:6px;">⚠️ correo temporal, a la espera del dominio</span>
+        </p>
+      </div>
+      <div class="contact-info-card">
+        <div class="ic">📍</div>
+        <h4>Dirección</h4>
+        <p>17-19 Boulevard de la Muette<br>95140 Garges-lès-Gonesse, Francia</p>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="route-card">
-        <img src="../camion-1.jpg" alt="Camión IBK Euro Afrique" style="width:100%; height:100%; object-fit:cover;">
-      </div>
-      <div class="float-card float-1"><span class="dot">⏱</span> 99% de entregas puntuales</div>
-      <div class="float-card float-2"><span class="dot">🎧</span> Soporte 24/7</div>
-    </div>
-  </div>
-</section>
+    <div class="form-card">
+      <h3 style="font-size:19px; color:var(--navy); margin-bottom:6px;">Envíenos un mensaje</h3>
+      <p style="font-size:13.5px; color:var(--muted); margin-bottom:24px;">Rellene este formulario — su solicitud se enviará directamente a nuestro equipo.</p>
+      <form id="contactForm" onsubmit="event.preventDefault(); submitDemande(this, 'contact', {nom:'Nom', entreprise:'Société', email:'E-mail', telephone:'Téléphone', profil:'Profil', message:'Message'}, 'Nueva solicitud de contacto — Sitio web IBK Euro Transport', 'contact@ibkeurotransport.eu');">
+        <div class="f-row">
+          <div class="f-field"><label>Nombre completo *</label><input class="f-input" name="Nom" required></div>
+          <div class="f-field"><label>Empresa</label><input class="f-input" name="Société"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-field"><label>Correo electrónico *</label><input class="f-input" type="email" name="E-mail" required></div>
+          <div class="f-field"><label>Teléfono</label><input class="f-input" name="Téléphone"></div>
+        </div>
+        <div class="f-field">
+          <label>Usted es *</label>
+          <select class="f-select" name="Profil" required>
+            <option value="">Seleccionar...</option>
+            <option>Cargador / Exportador</option>
+            <option>Transportista</option>
+            <option>Transitario</option>
+            <option>Fabricante</option>
+            <option>Otro</option>
+          </select>
+        </div>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="wrap stats-grid">
-    <div><div class="stat-num">9</div><div class="stat-lbl">Países cubiertos</div></div>
-    <div><div class="stat-num">99%</div><div class="stat-lbl">Entregas puntuales</div></div>
-    <div><div class="stat-num">50+</div><div class="stat-lbl">Transportistas asociados</div></div>
-    <div><div class="stat-num">24/7</div><div class="stat-lbl">Soporte dedicado</div></div>
-  </div>
-</div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--muted); margin:22px 0 14px; padding-top:18px; border-top:1px solid var(--line);">Detalles del transporte (si corresponde)</div>
+        <div class="f-row">
+          <div class="f-field"><label>País de origen</label><input class="f-input" name="PaysDepart" placeholder="Francia"></div>
+          <div class="f-field"><label>Código postal de origen</label><input class="f-input" name="CpDepart" placeholder="ej. 95140"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-field"><label>País de destino</label><input class="f-input" name="PaysArrivee" placeholder="Francia"></div>
+          <div class="f-field"><label>Código postal de destino</label><input class="f-input" name="CpArrivee" placeholder="ej. 69000"></div>
+        </div>
+        <div class="f-field">
+          <label>Tipo de vehículo preferido</label>
+          <select class="f-select" name="TypeCamion">
+            <option value="">No especificado</option>
+            <option>Tautliner</option>
+            <option>Mega Tautliner</option>
+            <option>Furgón</option>
+            <option>Refrigerado</option>
+          </select>
+        </div>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Lo que hacemos</div>
-      <h2>Soluciones completas de transporte y logística</h2>
-      <p>Desde cargas completas hasta el tránsito de mercancías, ofrecemos servicios logísticos integrales adaptados a su negocio.</p>
-    </div>
-    <div class="svc-grid">
-      <div class="svc-card">
-        <div class="svc-icon">🚛</div>
-        <h3>Transporte FTL</h3>
-        <p>Cargas completas dedicadas en toda Europa, rutas directas sin transbordo.</p>
-        <a href="service-ftl.html" class="lnk">Saber más →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">📦</div>
-        <h3>Transporte LTL</h3>
-        <p>Grupaje para envíos parciales económicos y optimizados.</p>
-        <a href="service-ltl.html" class="lnk">Saber más →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">⚡</div>
-        <h3>Carga Express</h3>
-        <p>Entrega express para envíos urgentes, plazos garantizados y trato prioritario.</p>
-        <a href="service-express.html" class="lnk">Saber más →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">🌍</div>
-        <h3>Transporte Internacional</h3>
-        <p>Soluciones transfronterizas en 9 países europeos, con experiencia aduanera incluida.</p>
-        <a href="service-international.html" class="lnk">Saber más →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">🤝</div>
-        <h3>Tránsito de Mercancías</h3>
-        <p>Gestión integral de la carga, desde la reserva hasta la entrega final, con total visibilidad.</p>
-        <a href="service-freight-forwarding.html" class="lnk">Saber más →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section id="why">
-  <div class="wrap why-inner">
-    <div class="why-visual">
-      <img src="../camion-2.jpg" alt="Flota IBK Euro Afrique" style="width:100%; height:100%; object-fit:cover;">
-      <div class="why-badge">
-        <div class="num">500+</div>
-        <div class="lbl">Vehículos a través de<br>nuestra red asociada</div>
-      </div>
-    </div>
-    <div>
-      <div class="eyebrow">Por qué elegirnos</div>
-      <h2 style="font-size:32px; color:var(--navy); margin-bottom:14px;">El socio en quien puede confiar</h2>
-      <p style="color:var(--muted); font-size:15px; margin-bottom:34px;">Combinamos una sólida experiencia logística con herramientas modernas para ofrecer un servicio fiable en toda Europa.</p>
-      <div class="feat-list">
-        <div class="feat"><span class="ic">👥</span><div><h4>Equipo experimentado</h4><p>Más de 20 años de experiencia combinada en logística y transporte por carretera.</p></div></div>
-        <div class="feat"><span class="ic">🚚</span><div><h4>Red de transportistas</h4><p>Una amplia red de subcontratistas verificados que cubre toda Europa.</p></div></div>
-        <div class="feat"><span class="ic">📍</span><div><h4>Seguimiento en tiempo real</h4><p>Visibilidad en vivo de sus envíos, en cada etapa.</p></div></div>
-        <div class="feat"><span class="ic">💶</span><div><h4>Precios competitivos</h4><p>Tarificación transparente, alineada con los índices del mercado.</p></div></div>
-        <div class="feat"><span class="ic">⏱</span><div><h4>Entrega rápida</h4><p>Rutas optimizadas y opciones express para sus envíos urgentes.</p></div></div>
-        <div class="feat"><span class="ic">🎯</span><div><h4>Satisfacción del cliente</h4><p>Un interlocutor dedicado para cada cliente, en cada misión.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OUR TEAM -->
-<section class="services">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow">Detrás de IBK Euro Transport</div>
-      <h2>Un equipo dedicado a su logística</h2>
-      <p>Seguimiento personalizado y atención al cliente receptiva, en cada etapa de su envío.</p>
-    </div>
-    <div class="team-grid">
-      <div style="border-radius:16px; overflow:hidden; height:340px;">
-        <img src="../bureau-equipe.jpg" alt="Equipo IBK Euro Afrique trabajando" style="width:100%; height:100%; object-fit:cover;">
-      </div>
-      <div style="border-radius:16px; overflow:hidden; height:340px;">
-        <img src="../equipe-ibk.jpg" alt="Equipo IBK Euro Afrique" style="width:100%; height:100%; object-fit:cover;">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- IBK CONNECT -->
-<section class="connect" id="connect">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow" style="color:#ff5fac;">Únase a nosotros</div>
-      <h2>IBK Connect — únase a nuestra red logística europea</h2>
-      <p>Ya sea conductor, transportista o cargador — tenemos una colaboración adaptada a su perfil.</p>
-    </div>
-    <div class="connect-grid">
-      <div class="connect-card">
-        <div class="connect-ic">🚗</div>
-        <h3>¿Es usted transportista?</h3>
-        <p>Únase a nuestra red de subcontratistas y acceda a un flujo constante de misiones en toda Europa.</p>
-        <a href="join.html#carrier" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Ser socio →</a>
-      </div>
-      <div class="connect-card">
-        <div class="connect-ic">🤝</div>
-        <h3>¿Es usted transitario?</h3>
-        <p>Amplíe su red — acceda a nuestra capacidad y a nuestra cobertura europea.</p>
-        <a href="join.html#forwarder" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Únase a nosotros →</a>
-      </div>
-      <div class="connect-card">
-        <div class="connect-ic">📦</div>
-        <h3>¿Es usted cargador?</h3>
-        <p>¿Busca un socio de transporte fiable? Obtenga una solución logística a medida.</p>
-        <a href="join.html#shipper" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Contáctenos →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section class="services">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow">IBK Euro Transport</div>
-      <h2>Nuestros logros y colaboraciones</h2>
-      <p>Descubra nuestros principales logros, proyectos en curso y oportunidades de colaboración.</p>
-    </div>
-    <div class="ach-grid">
-      <div class="ach-card"><div class="ach-tag">Colaboración</div><h4>Transportistas</h4><p>Buscamos transportistas fiables en toda Europa para unirse a nuestra red.</p></div>
-      <div class="ach-card"><div class="ach-tag">Colaboración</div><h4>Transitarios</h4><p>Amplíe su oferta de servicios asociándose con IBK Euro Transport.</p></div>
-      <div class="ach-card"><div class="ach-tag">Colaboración</div><h4>Cargadores y exportadores</h4><p>Soluciones de transporte a medida para sus mercancías.</p></div>
-      <div class="ach-card"><div class="ach-tag">Colaboración</div><h4>Fabricantes</h4><p>Soluciones de transporte y cadena de suministro para empresas industriales.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- COVERAGE -->
-<section class="coverage">
-  <div class="wrap cov-inner">
-    <div>
-      <div class="eyebrow" style="color:#ff5fac;">Nuestra red</div>
-      <h2 style="font-size:32px; margin-bottom:14px;">Cobertura en toda Europa</h2>
-      <p style="color:rgba(255,255,255,.65); font-size:15px; margin-bottom:24px;">Operamos en 9 países europeos, con Francia como base principal — de forma rápida, fiable y con total visibilidad.</p>
-      <div class="cov-hq">
-        <div class="tag">Sede central</div>
-        <div class="place">Garges-lès-Gonesse, Francia</div>
-      </div>
-      <div class="cov-list">
-        <div>🇫🇷 Francia</div><div>🇩🇪 Alemania</div>
-        <div>🇧🇪 Bélgica</div><div>🇦🇹 Austria</div>
-        <div>🇳🇱 Países Bajos</div><div>🇨🇭 Suiza</div>
-        <div>🇪🇸 España</div><div>🇵🇱 Polonia</div>
-        <div>🇮🇹 Italia</div>
-      </div>
-    </div>
-    <div class="map-frame">
-      <svg viewBox="0 0 400 420" class="europe-map">
-        <g class="country ctx"><path d="M16,80 L34,72 L40,90 L36,110 L24,118 L12,105 Z"/><title>Irlanda</title></g>
-        <g class="country ctx"><path d="M46,58 L71,52 L84,60 L88,85 L78,100 L84,115 L74,135 L58,140 L48,120 L54,100 L44,85 Z"/><title>Reino Unido</title></g>
-        <g class="country ctx"><path d="M32,288 L48,285 L52,320 L46,362 L34,360 L30,320 Z"/><title>Portugal</title></g>
-        <g class="country active"><path d="M54,268 L151,262 L158,300 L146,340 L116,368 L76,365 L56,335 L51,300 Z"/><title>España</title></g>
-        <g class="country active"><path d="M96,175 L126,142 L161,148 L188,165 L184,205 L196,225 L174,260 L141,268 L104,245 L91,205 Z"/><title>Francia</title></g>
-        <g class="country active"><path d="M176,132 L198,128 L202,148 L184,155 L174,145 Z"/><title>Bélgica</title></g>
-        <g class="country active"><path d="M188,100 L208,96 L216,112 L210,132 L192,130 L184,115 Z"/><title>Países Bajos</title></g>
-        <g class="country ctx"><path d="M218,58 L236,55 L242,72 L232,92 L220,88 L214,70 Z"/><title>Dinamarca</title></g>
-        <g class="country active"><path d="M200,105 L236,98 L266,108 L278,140 L272,178 L281,205 L258,222 L228,220 L206,205 L194,175 L202,140 Z"/><title>Alemania</title></g>
-        <g class="country active"><path d="M196,224 L222,220 L232,236 L220,250 L200,246 Z"/><title>Suiza</title></g>
-        <g class="country active"><path d="M230,224 L264,220 L290,232 L284,252 L252,256 L228,244 Z"/><title>Austria</title></g>
-        <g class="country ctx"><path d="M246,186 L278,182 L286,200 L274,218 L250,216 L242,200 Z"/><title>República Checa</title></g>
-        <g class="country active"><path d="M280,122 L326,118 L360,140 L354,178 L326,205 L292,208 L278,182 L284,150 Z"/><title>Polonia</title></g>
-        <g class="country active"><path d="M208,252 L234,248 L254,255 L248,278 L260,300 L254,330 L264,355 L250,388 L240,384 L238,350 L226,320 L232,295 L214,278 Z"/><title>Italia</title></g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow">FAQ</div>
-      <h2>Preguntas frecuentes</h2>
-      <p>Todo lo que necesita saber sobre nuestros servicios de transporte y logística.</p>
-    </div>
-    <div class="faq-list" id="faqList">
-      <div class="faq-item">
-        <button class="faq-q">¿Qué tipos de transporte ofrecen? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Ofrecemos transporte FTL (carga completa), LTL (grupaje), express, transporte internacional, así como tránsito de mercancías integral.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">¿En cuánto tiempo puedo obtener un presupuesto? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Nuestro equipo responde en 24 horas con una solución logística adaptada a sus necesidades.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">¿Ofrecen seguimiento en tiempo real? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Sí, cada misión se rastrea y puede obtener una actualización de estado en cualquier momento con su interlocutor dedicado.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">¿Qué países cubren? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Nuestra red cubre 9 países europeos, con Francia como base principal.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">¿Qué tipos de mercancías transportan? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Mercancías generales, palés, paquetes, así como soluciones específicas según su sector.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">¿Sus servicios están asegurados? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Sí, cada misión está cubierta por un seguro de transporte adecuado.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CAREERS -->
-<section id="careers" class="services">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow">Únase al equipo</div>
-      <h2>Empleo en IBK Euro Transport</h2>
-      <p>Contratamos regularmente agentes de tránsito, personal comercial y operativo para apoyar nuestro crecimiento en Europa. Envíenos su candidatura, le responderemos rápidamente.</p>
-    </div>
-    <div style="text-align:center;">
-      <a href="mailto:contact@ibkeurotransport.eu" class="btn btn-pink">Enviar candidatura espontánea</a>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section id="contact">
-  <div class="wrap">
-    <div class="final-cta">
-      <div>
-        <h2>¿Necesita un socio de transporte?</h2>
-        <p>Obtenga su presupuesto gratuito hoy mismo — respuesta en 24 horas.</p>
-      </div>
-      <a href="tel:+33185763070" class="btn btn-navy">+33 1 85 76 30 70</a>
+        <div class="f-field"><label>Mensaje *</label><textarea class="f-textarea" name="Message" required placeholder="Naturaleza de la mercancía, volúmenes, frecuencia, requisitos especiales..."></textarea></div>
+        <button type="submit" class="btn btn-pink f-submit">Enviar mensaje →</button>
+        <p class="form-note">* Campos obligatorios. Su solicitud se envía directamente a nuestro equipo — normalmente respondemos en 24 horas.</p>
+      </form>
     </div>
   </div>
 </section>
