@@ -278,12 +278,14 @@
   .cov-hq .tag{font-size:11px; font-weight:700; text-transform:uppercase; color:var(--pink); letter-spacing:.05em;}
   .cov-hq .place{font-family:'Space Grotesk'; font-weight:700; font-size:19px; margin-top:4px;}
   .map-frame{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:20px;}
-  .europe-map{width:100%; height:auto; max-height:420px;}
-  .europe-map .country path{stroke:rgba(13,27,42,.5); stroke-width:1;}
-  .europe-map .country.ctx path{fill:rgba(255,255,255,.08);}
-  .europe-map .country.active path{fill:var(--pink); transition:fill .15s;}
-  .europe-map .country.active:hover path{fill:#ff4fa0;}
-  .europe-map .country title{pointer-events:none;}
+  .europe-map{width:100%; height:auto; max-height:440px;}
+  .europe-map .country{stroke:rgba(13,27,42,.6); stroke-width:0.5; transition:fill .15s;}
+  .europe-map .country.ctx{fill:rgba(255,255,255,.09);}
+  .europe-map .country.active{fill:var(--pink);}
+  .europe-map .country.active:hover{fill:#ff4fa0;}
+  .europe-map text{font-family:'Inter',sans-serif; pointer-events:none;}
+  .europe-map .label-active{fill:#fff; font-weight:700;}
+  .europe-map .label-ctx{fill:rgba(255,255,255,.5); font-weight:500;}
 
   /* ===== FAQ ===== */
   .faq-list{max-width:760px; margin:0 auto;}
@@ -510,8 +512,7 @@
       <div class="contact-info-card">
         <div class="ic">✉️</div>
         <h4>E-mail</h4>
-        <p>contact@ibkeurotransport.eu
-          <span class="placeholder-note" style="display:block; margin-top:6px;">⚠️ tijdelijk e-mailadres, in afwachting van het domein</span>
+        <p>info@ibk-eurotransport.com
         </p>
       </div>
       <div class="contact-info-card">
@@ -523,7 +524,7 @@
     <div class="form-card">
       <h3 style="font-size:19px; color:var(--navy); margin-bottom:6px;">Stuur ons een bericht</h3>
       <p style="font-size:13.5px; color:var(--muted); margin-bottom:24px;">Vul dit formulier in — uw aanvraag wordt rechtstreeks naar ons team gestuurd.</p>
-      <form id="contactForm" onsubmit="event.preventDefault(); submitDemande(this, 'contact', {nom:'Nom', entreprise:'Société', email:'E-mail', telephone:'Téléphone', profil:'Profil', message:'Message'}, 'Nieuwe contactaanvraag — IBK Euro Transport website', 'contact@ibkeurotransport.eu');">
+      <form id="contactForm" onsubmit="event.preventDefault(); submitDemande(this, 'contact', {nom:'Nom', entreprise:'Société', email:'E-mail', telephone:'Téléphone', profil:'Profil', message:'Message'}, 'Nieuwe contactaanvraag — IBK Euro Transport website', 'info@ibk-eurotransport.com');">
         <div class="f-row">
           <div class="f-field"><label>Volledige naam *</label><input class="f-input" name="Nom" required></div>
           <div class="f-field"><label>Bedrijf</label><input class="f-input" name="Société"></div>
@@ -583,8 +584,7 @@
         </div>
         <p>IBK Euro Transport is een transport- en logistiekbedrijf dat actief is in heel Europa.</p>
         <p style="margin-top:14px;">📞 <a href="tel:+33185763070">+33 1 85 76 30 70</a></p>
-        <p style="margin-top:6px;">✉️ contact@ibkeurotransport.eu
-          <span class="placeholder-note">⚠️ tijdelijk e-mailadres, in afwachting van het domein</span>
+        <p style="margin-top:6px;">✉️ info@ibk-eurotransport.com
         </p>
         <p style="margin-top:10px;">17-19 Boulevard de la Muette<br>95140 Garges-lès-Gonesse, Frankrijk</p>
       </div>
