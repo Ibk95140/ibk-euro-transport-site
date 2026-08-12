@@ -277,12 +277,14 @@
   .cov-hq .tag{font-size:11px; font-weight:700; text-transform:uppercase; color:var(--pink); letter-spacing:.05em;}
   .cov-hq .place{font-family:'Space Grotesk'; font-weight:700; font-size:19px; margin-top:4px;}
   .map-frame{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:20px;}
-  .europe-map{width:100%; height:auto; max-height:420px;}
-  .europe-map .country path{stroke:rgba(13,27,42,.5); stroke-width:1;}
-  .europe-map .country.ctx path{fill:rgba(255,255,255,.08);}
-  .europe-map .country.active path{fill:var(--pink); transition:fill .15s;}
-  .europe-map .country.active:hover path{fill:#ff4fa0;}
-  .europe-map .country title{pointer-events:none;}
+  .europe-map{width:100%; height:auto; max-height:440px;}
+  .europe-map .country{stroke:rgba(13,27,42,.6); stroke-width:0.5; transition:fill .15s;}
+  .europe-map .country.ctx{fill:rgba(255,255,255,.09);}
+  .europe-map .country.active{fill:var(--pink);}
+  .europe-map .country.active:hover{fill:#ff4fa0;}
+  .europe-map text{font-family:'Inter',sans-serif; pointer-events:none;}
+  .europe-map .label-active{fill:#fff; font-weight:700;}
+  .europe-map .label-ctx{fill:rgba(255,255,255,.5); font-weight:500;}
 
   /* ===== FAQ ===== */
   .faq-list{max-width:760px; margin:0 auto;}
@@ -682,21 +684,55 @@
       </div>
     </div>
     <div class="map-frame">
-      <svg viewBox="0 0 400 420" class="europe-map">
-        <g class="country ctx"><path d="M16,80 L34,72 L40,90 L36,110 L24,118 L12,105 Z"/><title>Irlanda</title></g>
-        <g class="country ctx"><path d="M46,58 L71,52 L84,60 L88,85 L78,100 L84,115 L74,135 L58,140 L48,120 L54,100 L44,85 Z"/><title>Regno Unito</title></g>
-        <g class="country ctx"><path d="M32,288 L48,285 L52,320 L46,362 L34,360 L30,320 Z"/><title>Portogallo</title></g>
-        <g class="country active"><path d="M54,268 L151,262 L158,300 L146,340 L116,368 L76,365 L56,335 L51,300 Z"/><title>Spagna</title></g>
-        <g class="country active"><path d="M96,175 L126,142 L161,148 L188,165 L184,205 L196,225 L174,260 L141,268 L104,245 L91,205 Z"/><title>Francia</title></g>
-        <g class="country active"><path d="M176,132 L198,128 L202,148 L184,155 L174,145 Z"/><title>Belgio</title></g>
-        <g class="country active"><path d="M188,100 L208,96 L216,112 L210,132 L192,130 L184,115 Z"/><title>Paesi Bassi</title></g>
-        <g class="country ctx"><path d="M218,58 L236,55 L242,72 L232,92 L220,88 L214,70 Z"/><title>Danimarca</title></g>
-        <g class="country active"><path d="M200,105 L236,98 L266,108 L278,140 L272,178 L281,205 L258,222 L228,220 L206,205 L194,175 L202,140 Z"/><title>Germania</title></g>
-        <g class="country active"><path d="M196,224 L222,220 L232,236 L220,250 L200,246 Z"/><title>Svizzera</title></g>
-        <g class="country active"><path d="M230,224 L264,220 L290,232 L284,252 L252,256 L228,244 Z"/><title>Austria</title></g>
-        <g class="country ctx"><path d="M246,186 L278,182 L286,200 L274,218 L250,216 L242,200 Z"/><title>Repubblica Ceca</title></g>
-        <g class="country active"><path d="M280,122 L326,118 L360,140 L354,178 L326,205 L292,208 L278,182 L284,150 Z"/><title>Polonia</title></g>
-        <g class="country active"><path d="M208,252 L234,248 L254,255 L248,278 L260,300 L254,330 L264,355 L250,388 L240,384 L238,350 L226,320 L232,295 L214,278 Z"/><title>Italia</title></g>
+      <svg viewBox="905 65 290 295" class="europe-map">
+        <path class="country ctx" d="M947.3 231.7l-3.5-1.3-2.9.1 1.1-3.2-.8-3.2-3.7 2.8-6.7 4.7 2.1 6.1-4.2 6.4 6.7.9 8.7-3.6 3.9-5.4-.7-4.3z"/>
+        <text x="938.3" y="234.6" class="label-ctx" font-size="5.5" text-anchor="middle">Irlanda</text>
+        <path class="country ctx" d="M950 227.5l-4.9-3.7-3.9.3.8 3.2-1.1 3.2 2.9-.1 3.5 1.3 2.7-4.2zm13-24.3l-5.5.5-3.6-.4-3.7 4.8-1.9 6.1 2.2 3 .1 5.8 2.6-2.8 1.4 1.6-1.7 2.7 1 1.6 5.7 1.1h.1l3.1 3.8-.8 3.5-7.1-.6-1 4 2.6 3.3-5.1 1.9 1.3 2.4 7.5 1-4.3 1.3-7.3 6.5 2.5 1.2 3.5-2.3 4.5.7 3.3-2.9 2.2 1.2 8.3-1.7 6.5.1 4.3-3.3-1.9-3.1 2.4-1.8.5-3.9-5.8-1.2-1.3-2.3-2.9-6.9-3.2-1-4.1-7.1-.4-.6-4.8-.4 4.2-5.3 1.3-4.9h-5l-4.7.8 5-6.4z"/>
+        <text x="958.0" y="225.0" class="label-ctx" font-size="8" text-anchor="middle">Regno Unito</text>
+        <path class="country ctx" d="M937.6 335.9l-.4-2.1 2-2.5.8-1.7-1.8-1.9 1.6-4.3-2-3.8 2.2-.5.3-3 .9-.9.2-4.9 2.4-1.7-1.3-3.1-3-.2-.9.8h-3l-1.2-3.1-2.1.9-1.9 1.6.1 2.1.9 2.2.1 2.7-1.3 3.8-.4 2.5-2.2 2.3-.6 4.2 1.2 2.4 2.3.6.4 4-1 5.1 2.8-.7 2.7.9 2.2-1.7z"/>
+        <text x="935.4" y="320.3" class="label-ctx" font-size="5.5" text-anchor="middle">Portogallo</text>
+        <path class="country active" d="M985 325.7v-.2h-.5l-.3-.4-.1.2-.1.2v.2h.5l.4.1.1-.1zm-.8-1.6h.3l.6-.7v-.3l-.3-.2-1.1.2-.2.3v.3l-.3.1-.1.4.1.2.8.1.2-.4zM967 296l-8.2-.2-4.2.3-5.4-1h-6.8l-6.2-1.1-7.4 4.5 2 2.6-.4 4.4 1.9-1.6 2.1-.9 1.2 3.1h3l.9-.8 3 .2 1.3 3.1-2.4 1.7-.2 4.9-.9.9-.3 3-2.2.5 2 3.8-1.6 4.3 1.8 1.9-.8 1.7-2 2.5.4 2.1 4.8 1 1.4 3.7 2 2.2 2.5.6 2.1-2.5 3.3-2.3 5 .1h6.7l3.8-5 3.9-1.3 1.2-4.2 3-2.9-2-3.7 2-5.1 3.1-3.5.5-2.1 6.6-1.3 4.8-4.2-.3-3.5-6 .8-5.7-2.8-1.9 1.3-9.4-2.8-2-2.4zm26 22.6l.1-.3.1-.2.1-.1-.2-.2v-.1l.2-.2-.2-.1-1.3.4-.7.4-2.1 1.5v.3l.1.2h.4l.2.4.4-.4.3-.1.3.1.3.2.1.6.1.2.6.1.9.4.4-.2.5-.3.2-.6.3-.5.3-.5.3-.4-.1-.4-.3-.1-.3-.1-.5.2-.5-.2zm6-.3l.1-.4v-.1l-.5-.7-.9-.3-1 .1-.1.1v.4l.1.1.6.1 1.6.7h.1z"/>
+        <text x="964.0" y="318.7" class="label-active" font-size="9.5" text-anchor="middle">Spagna</text>
+        <path class="country active" d="M1025.7 303.8l-1.1-5.2-3.2 2.3-1 2.3 1.4 4.2 2.4 1.2 1.5-4.8zm-31.5-50.9l-2.4-2.4-2.2-.1-.7-2.2-4.3 1.2-1.4 5.1-11.3 4.8-4.6-2.6 1.4 7-8.2-1.6-6.4 1.3.4 4.6 7.5 2.4 3.6 3.1 5.1 6.5-1 12.3-2.7 3.7 2 2.4 9.4 2.8 1.9-1.3 5.7 2.8 6-.8.5-3.7 7.4-2 10 1.6 4.5-3.4.5-2.7-2.7-.8-1.5-4.8 1.7-1.8-1.6-2.4.2-1.7-1.8-2.7-2.4.9v-2.8l3.5-3.5-.2-1.6 2.3.6 1.3-1 .5-4.5 2.3-4.2-7.1-1.2-2.4-1.6-1.4.1-1.1-.5-4.4-2.8-2.5.4-3.4-2.9z"/>
+        <text x="989.9" y="278.4" class="label-active" font-size="9.5" text-anchor="middle">Francia</text>
+        <path class="country active" d="M1000.7 246.2l-4.4 1.3-3.6-.5-3.8 1.2.7 2.2 2.2.1 2.4 2.4 3.4 2.9 2.5-.4 4.4 2.8.4-3.5 1.3-.2.4-4.2-2.8-1.4-3.1-2.7z"/>
+        <text x="997.8" y="252.2" class="label-active" font-size="5.5" text-anchor="middle">Belgio</text>
+        <path class="country active" d="M1005.5 243.9h2.9l1.1-2.3 1-5.6-1-2-3.9-.2-6.5 2.6-3.9 8.9-2.5 1.7 3.6.5 4.4-1.3 3.1 2.7 2.8 1.4-1.1-6.4z"/>
+        <text x="1001.6" y="242.1" class="label-active" font-size="5.5" text-anchor="middle">Paesi Bassi</text>
+        <path class="country ctx" d="M1035.9 221.2l-1.7-3-6.7 2 .9 2.5 5.1 3.4 2.4-4.9zm-8.6-5.1l-2.6-.9-.7-1.6 1.3-2-.1-3-3.6 1.6-1.5 1.7-4 .4-1.2 1.7-.7 1.6.4 6.1 2.1 3.4 3.6.8 3-.9-1.5-3 3.1-4.3 1.4.7 1-2.3z"/>
+        <text x="1024.0" y="213.0" class="label-ctx" font-size="6.5" text-anchor="middle">Danimarca</text>
+        <path class="country active" d="M1043.6 232.3l-2.4-1.9-5.5-2.4-2.5 1.7-4.7 1.1-.1-2.1-4.9-1.4-.2-2.3-3 .9-3.6-.8.4 3.4 1.2 2.2-3 3-1-1.3-3.9.3-.9 1.3 1 2-1 5.6-1.1 2.3h-2.9l1.1 6.4-.4 4.2 1 1.4-.2 2.7 2.4 1.6 7.1 1.2-2.3 4.2-.5 4.5h4.2l1-1.4 5.4 1.9 1.5-.3 2.6 1.7.6-1.6 4.4.3 3.4-1.2 2.4.2 1.7 1.3.4-1.1-1-4 1.7-.8 1.5-2.9-2.9-2.6-2.6-1.5-.7-2.6-1-1.9 3.4-1.3 1.7-1.5 3.4-1.2 1.1-1.2 1.4.7 2.1-.6-2.3-3.9.1-2.1-1.4-3.3-2-2.2 1.2-1.6-1.4-3.1z"/>
+        <text x="1027.5" y="248.5" class="label-active" font-size="8" text-anchor="middle">Germania</text>
+        <path class="country active" d="M1024.3 270.6l-5.4-1.9-1 1.4h-4.2l-1.3 1-2.3-.6.2 1.6-3.5 3.5v2.8l2.4-.9 1.8 2.7 2.2 1.3 2.4-.3 2.7-2.1.9 1 2.4-.2.9-2.5 3.8.8 2.1-1.1.3-2.5-2.6-.2-2.3-1.1.7-1.6-.2-1.1z"/>
+        <text x="1017.8" y="275.1" class="label-active" font-size="6.5" text-anchor="middle">Svizzera</text>
+        <path class="country active" d="M1060.2 264l-2.3-1.2-2.3.3-4-1.9-1.7.5-2.6 2.5-3.8-2-1.5 2.9-1.7.8 1 4-.4 1.1-1.7-1.3-2.4-.2-3.4 1.2-4.4-.3-.6 1.6-2.6-1.7-1.5.3.2 1.1-.7 1.6 2.3 1.1 2.6.2 3.1.9.5-1.2 4.8-1.1 1.3 2.2 7.2 1.6 4.2.4 2.4-1.4 4.3-.1.9-1.1 1.3-4-1.1-1.3h2.8l.2-2.6-.7-2.1.3-.8z"/>
+        <text x="1042.2" y="269.3" class="label-active" font-size="8" text-anchor="middle">Austria</text>
+        <path class="country ctx" d="M1049.4 248.5l-2.1.6-1.4-.7-1.1 1.2-3.4 1.2-1.7 1.5-3.4 1.3 1 1.9.7 2.6 2.6 1.5 2.9 2.6 3.8 2 2.6-2.5 1.7-.5 4 1.9 2.3-.3 2.3 1.2.6-1.4 2.2.1 1.6-.6.1-.6.9-.3.2-1.4 1.1-.3.6-1.1h1.5l-2.6-3.1-3.6-.3-.7-2-3.4-.6-.6 1.5-2.7-1.2.1-1.7-3.7-.6-2.4-1.9z"/>
+        <text x="1052.6" y="256.3" class="label-ctx" font-size="6.5" text-anchor="middle">Cechia</text>
+        <path class="country active" d="M1069.4 228.3l-4.6-.1-.5-1.4-4.8-1.1-5.7 2.1-7.1 2.8-3.1 1.7 1.4 3.1-1.2 1.6 2 2.2 1.4 3.3-.1 2.1 2.3 3.9 2.4 1.9 3.7.6-.1 1.7 2.7 1.2.6-1.5 3.4.6.7 2 3.6.3 2.6 3.1.3.4 1.9-.9 2.7 2.2 2.8-1.3 2.4.6 3.4-.8 4.9 2.3 1.1.4-1.6-2.8 3.8-5.1 2.3-.7.3-1.8-3.1-5.3-.5-2.7-1.9-2.9 2.7-1.2-.3-2.4-1.7-2.3-.6-2.7-1.4-1.9-2.5-.6-8.7.1-5.9-.7z"/>
+        <text x="1068.5" y="243.5" class="label-active" font-size="8" text-anchor="middle">Polonia</text>
+        <path class="country active" d="M1057.8 328.6l-4 .5-5.2.7-6.2-.6-.6 3.4 7.5 3.3 2.7.7 4.2 2.4.9-3.3-.9-2 1.6-5.1zm-33.7-18.9l-2.5 1.9-2.8-.3 1.3 3.6.4 7.6 2.1 1.7 2-2.1 2.4.4.4-8.4-3.3-4.4zm14.3-34.3l-1.3-2.2-4.8 1.1-.5 1.2-3.1-.9-.3 2.5-2.1 1.1-3.8-.8-.9 2.5-2.4.2-.9-1-2.7 2.1-2.4.3-2.2-1.3-.2 1.7 1.6 2.4-1.7 1.8 1.5 4.8 2.7.8-.5 2.7 2.1-.5 2.8-2.8 2.3-.9 4.2 2.1 2.6.7 1.9 6 3.6 3.6 4.9 4 4.2 2.8 3.9.4 2.3 2.5 3.4 1.2 1.7 2.7 2.2.8 1.8 3.2 2.3 3.7-1.1 1.3-.8 3.5.1 2 2.1-.5 2.5-5.6 2.1-.4.4-3.3-3.9-2.3 1.9-4.1 4.5 1 3.1 3 .8-2.3-.6-1.2-4.7-3.2-3.9-1.9-4.8-2.3 1.4-1.2-1.4-1.4-4 .1-6-5-2.9-5.1-4.9-3.1-1.9-3.1.5-1.8-.4-3 3.9-2.2 4.1.9-1.4-2.7.3-3-7.2-1.6z"/>
+        <text x="1040.0" y="300.0" class="label-active" font-size="9.5" text-anchor="middle">Italia</text>
+        <path class="country ctx" d="M1088.8 133.1l-6.9 1.1-7.3-.3-5.1 4.4-6.7-.3-8.5 2.3-10.1 6.8-6.4 4-8.8 10.7-7.1 7.8-8.1 5.8-11.2 4.8-3.9 3.6 1.9 13.4 1.9 6.3 6.4 3 6-1.4 8.5-6.8 3.3 3.6 1.7-3.3 3.4-4 .9-6.9-3.1-2.9-1-7.6 2.3-5.3 4.3.1 1.3-2.2-1.8-1.9 5.7-7.9 3.4-6.1 2.2-3.9 4 .1.6-3.1 7.9.9v-3.5l2.5-.3 2.1-1.4 5.1 2.9 5.3-.3 4.7 1.3 3.4-2.4 1.1-3.9 5.8-1.8 5.7 2.1-.8 3.8 3.2-.5 6.4-2.2-5.4-3.3 4.8-1.4-13.6-3.9zm-22.6-33.3l-5.6-1-1.9-1.7-7.2.9 2.6 1.5-2.2 1.2 6.7 1.1 7.6-2zm-25.4-8.3l-4.8-1.6-5.1.2-1 1.5h-5l-2.2-1.5-9.3 1.6 3.2 3.5 7.6 3.8 5.7 1.4-3 1.7 8.4 2.9 4.4-.2.9-3.9 3-.9 1.2-3.4 8.5-1.8-12.5-3.3zm24.2-3.1l-9.1-1-3.2 1.2-5.3-1-10.4 1.2 4.3 2h5.1l.9 1.3 10.6.7 10.1-.5 4.3-2.4-7.3-1.5z"/>
+        <text x="1035.0" y="130.0" class="label-ctx" font-size="9.5" text-anchor="middle">Norvegia</text>
+        <path class="country ctx" d="M1077.7 161.1l-1.9-2.2-1.7-8.4-7.2-3.7-5.9-2.7-2.5.3v3.5l-7.9-.9-.6 3.1-4-.1-2.2 3.9-3.4 6.1-5.7 7.9 1.8 1.9-1.3 2.2-4.3-.1-2.3 5.3 1 7.6 3.1 2.9-.9 6.9-3.4 4-1.7 3.3 4.2 8.4 4.4 6.7 2 5.7 5.3-.3 2.2-4.7 5.7.5 2-5.5.6-10 4.6-1.3 3.3-6.6-4.8-3.3-3.6-4 2.1-8.1 7.7-4.9 6.1-4.5-1.2-3.5 3.4-3.9 7-1.5z"/>
+        <text x="1052.2" y="183.4" class="label-ctx" font-size="8" text-anchor="middle">Svezia</text>
+        <path class="country ctx" d="M1093.4 144.4l.8-3.8-5.7-2.1-5.8 1.8-1.1 3.9-3.4 2.4-4.7-1.3-5.3.3-5.1-2.9-2.1 1.4 5.9 2.7 7.2 3.7 1.7 8.4 1.9 2.2 6.4 2.6.9 2.3-2.6 1.2-8.7 6.1-3.3 3.6-1.5 3.3 2.9 5.2-.1 5.7 4.7 1.9 3.1 3.1 7.1-1.2 7.5-2.1 8-.5 7.9-7.4 3.3-3.3.9-2.9-7.3-3.9.9-3.7-4.9-4.1 1.7-4.8-6.4-6.3 2.8-4.1-7.2-3.7-.4-3.7z"/>
+        <text x="1087.6" y="167.3" class="label-ctx" font-size="8" text-anchor="middle">Finlandia</text>
+        <path class="country ctx" d="M1093.2 197.5l-5.5.9-5.4 1.6.9 3.4 3.3 2.1 1.5-.8.1 3.5 3.7-1 2.1.7 4.4 2.2h3.8l1.6-1.9-2.5-5.5 2.6-3.4-.9-1-4.6.2-5.1-1z"/>
+        <text x="1093.0" y="203.8" class="label-ctx" font-size="6.5" text-anchor="middle">Estonia</text>
+        <path class="country ctx" d="M1102.1 210.1h-3.8l-4.4-2.2-2.1-.7-3.7 1-.2 4.6-3.6.1-4.4-4.5-4 2.1-1.7 3.7.5 4.5 5-1.9 7.9.4 4.4-.6.9 1.3 2.5.4 5 2.9 2.6-1 4.6-2.3-2.1-3.6-1-2.8-2.4-1.4z"/>
+        <text x="1090.9" y="214.2" class="label-ctx" font-size="6.5" text-anchor="middle">Lettonia</text>
+        <path class="country ctx" d="M1100.4 221.2l-5-2.9-2.5-.4-.9-1.3-4.4.6-7.9-.4-5 1.9 1.7 5 5 1.1 2.2.9-.2 1.7.6 1.5 2.5.6 1.4 1.9h4.6l4.8-2.2.5-3.4 3.5-2-.9-2.6z"/>
+        <text x="1088.0" y="224.0" class="label-ctx" font-size="6.5" text-anchor="middle">Lituania</text>
+        <path class="country ctx" d="M1112.8 219.4l-5.2-1.5-4.6 2.3-2.6 1 .9 2.6-3.5 2-.5 3.4-4.8 2.2h-4.6l.6 2.7 1.7 2.3.3 2.4-2.7 1.2 1.9 2.9.5 2.7 2.2-.3 2.4-1.6 3.7-.2 5 .5 5.6 1.5 3.8.1 2 .9 1.6-1.1 1.5 1.5 4.3-.3 2 .6-.2-3.1 1.2-1.4 4.1-.3-2-3.9-1.5-2 .8-.6 3.9.2 1.6-1.3-1.7-1.6-3.4-1.1.1-1.1-2.2-1.1-3.7-3.9.6-1.6-1-2.9-4.8-1.4-2.3.7-1-1.4z"/>
+        <text x="1110.0" y="232.6" class="label-ctx" font-size="8" text-anchor="middle">Bielorussia</text>
+        <path class="country ctx" d="M1138.5 241l-4.8.5-1.5-.3-1 1.4-1.8-.2-4.1.3-1.2 1.4.2 3.1-2-.6-4.3.3-1.5-1.5-1.6 1.1-2-.9-3.8-.1-5.6-1.5-5-.5-3.7.2-2.4 1.6-2.2.3 3.1 5.3-.3 1.8-2.3.7-3.8 5.1 1.6 2.8-1.1-.4-1.1 1.7-.7 2.5 2.9 1.7.6 1.6 1.9-1.3 3.2.7h3.2l2.4 1.5 1.6-.9 3.6-.6 1-1.5h2.1l1.1-.9 3.2-.6 3.9 1.9 2 .3 2.5 1.6v2.1l1.9 1.1 1.1 2.6 2 1.5-.2 1 1 .6-1.2.5-3-.2-.6-.9-1 .5.5 1.1-1.1 2-.5 2.1-1.2.7 2.4 1.1 2.2-1 2.4 1.1 3.3-4.6 1.3-3.4 4.5-.8.7 2.4 8 1.5 1.7 1.4-4.5 2.1-.7 1.2 5.8 1.8-.6 2.9 3 1.3 6.3-3.6 5.3-1.1.6-2.2-5.1.4-2.7-1.5-1-3.9 3.9-2.3 4.6-.3 3-2 3.9-.5-.4-2.8 2.2-1.7 4.7-.5.3-2.1-1.8-3.4 1.3-3.2-.4-1.9-7.6-2-2.9.1-3.6-2.9-3.5 1-6.6-2.2-.2-1.2-2.2-2.7-4-.2-.7-1.9.9-1.3-3.8-3.4z"/>
+        <text x="1129.6" y="265.7" class="label-ctx" font-size="9.5" text-anchor="middle">Ucraina</text>
+        <path class="country ctx" d="M1108.1 266.3h-2.1l-1 1.5-3.6.6-1.6.9-2.4-1.5h-3.2l-3.2-.7-1.9 1.3-2.9 1.3-1.9 4.2-2.6 4.3-3.8 1.1 2.9 2.5.8 1.9 3.2 1.5.7 2.5 3.1 1.8 1.4-1.3 1.4.7-1.1 1.1 1 1 1.8 2.6 1.9-.5 4 1 7.5.3 2.3-1.6 5.8-1.4 4 2.2 3 .7.4-7.4 1.6.5 2.3-1.3-.4-1.6-2.4-1.1-2.2 1-2.4-1.1-1.3-2.8.2-2.7-.6-2.7-3.4-3.7-1.9-2.6-1.8-1.9-1.6-.6z"/>
+        <text x="1101.9" y="280.4" class="label-ctx" font-size="8" text-anchor="middle">Romania</text>
+        <path class="country ctx" d="M1121.6 294.3l-3-.7-4-2.2-5.8 1.4-2.3 1.6-7.5-.3-4-1-1.9.5-1.8-2.6-1.1 1.4.7 2.3 2.8 2.6-1.7 1.9-.7 2 .6.7-.7.9 2.8 2 .8 4.1 3.8.2 3.9-1.7 3.9 2.1 4.6-.6-.3-3 5-2 4.5.8-2.1-3.5 1.3-4.4 2.2-2.5z"/>
+        <text x="1105.9" y="300.2" class="label-ctx" font-size="6.5" text-anchor="middle">Bulgaria</text>
       </svg>
     </div>
   </div>
@@ -748,7 +784,7 @@
       <p>Assumiamo regolarmente spedizionieri, personale commerciale e operativo per sostenere la nostra crescita in Europa. Inviaci la tua candidatura, ti risponderemo rapidamente.</p>
     </div>
     <div style="text-align:center;">
-      <a href="mailto:contact@ibkeurotransport.eu" class="btn btn-pink">Invia candidatura spontanea</a>
+      <a href="mailto:info@ibk-eurotransport.com" class="btn btn-pink">Invia candidatura spontanea</a>
     </div>
   </div>
 </section>
@@ -777,8 +813,7 @@
         </div>
         <p>IBK Euro Transport è un'azienda di trasporti e logistica attiva in tutta Europa.</p>
         <p style="margin-top:14px;">📞 <a href="tel:+33185763070">+33 1 85 76 30 70</a></p>
-        <p style="margin-top:6px;">✉️ contact@ibkeurotransport.eu
-          <span class="placeholder-note">⚠️ e-mail temporanea, in attesa del dominio</span>
+        <p style="margin-top:6px;">✉️ info@ibk-eurotransport.com
         </p>
         <p style="margin-top:10px;">17-19 Boulevard de la Muette<br>95140 Garges-lès-Gonesse, Francia</p>
       </div>
