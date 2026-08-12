@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>IBK Euro Transport — Samen Europa vooruit helpen</title>
-<meta name="description" content="Betrouwbare transport-, expeditie- en logistieke oplossingen in heel Europa. FTL, LTL, express, internationaal transport." />
+<title>Expeditie — IBK Euro Transport</title>
+<meta name="description" content="Expeditie met IBK Euro Transport: volledig vrachtbeheer, van boeking tot levering." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
     --navy:#0d1b2a;
@@ -473,11 +474,11 @@
       <div class="lang-wrap" id="langWrap">
         <button class="lang-btn" id="langBtn">🌐 NL <span class="chev">▾</span></button>
         <div class="lang-menu">
-          <a class="lang-opt" href="../index.html"><span class="flag">🇫🇷</span> Français</a>
-          <a class="lang-opt" href="../en/index.html"><span class="flag">🇬🇧</span> English</a>
-          <a class="lang-opt" href="../de/index.html"><span class="flag">🇩🇪</span> Deutsch</a>
-          <a class="lang-opt" href="../es/index.html"><span class="flag">🇪🇸</span> Español</a>
-          <a class="lang-opt" href="../it/index.html"><span class="flag">🇮🇹</span> Italiano</a>
+          <a class="lang-opt" href="../service-affretement.html"><span class="flag">🇫🇷</span> Français</a>
+          <a class="lang-opt" href="../en/service-freight-forwarding.html"><span class="flag">🇬🇧</span> English</a>
+          <a class="lang-opt" href="../de/service-freight-forwarding.html"><span class="flag">🇩🇪</span> Deutsch</a>
+          <a class="lang-opt" href="../es/service-freight-forwarding.html"><span class="flag">🇪🇸</span> Español</a>
+          <a class="lang-opt" href="../it/service-freight-forwarding.html"><span class="flag">🇮🇹</span> Italiano</a>
           <button class="lang-opt active" data-lang="nl"><span class="flag">🇳🇱</span> Nederlands</button>
           <button class="lang-opt" data-lang="pl"><span class="flag">🇵🇱</span> Polski <span class="soon">Binnenkort</span></button>
         </div>
@@ -489,279 +490,105 @@
 </header>
 
 
-<!-- HERO -->
-<section class="hero" id="home" style="padding-top:80px;">
-  <div class="wrap hero-inner">
-    <div>
-      <div class="eyebrow" style="color:#ff5fac;">Betrouwbare transportpartner in Europa</div>
-      <h1>Samen Europa<br>vooruit <span>helpen</span></h1>
-      <p class="lead">Betrouwbare transport-, expeditie- en logistieke oplossingen in heel Europa. Van complete ladingen tot groupage, van exprestransport tot expeditie — wij helpen uw bedrijf vooruit.</p>
-      <div class="hero-ctas">
-        <a href="contact.html" class="btn btn-pink">Offerte aanvragen →</a>
-        <a href="contact.html" class="btn btn-outline">Neem contact op</a>
-      </div>
-      <div class="hero-badges">
-        <div class="hero-badge"><span class="num">🇪🇺</span><span class="lbl">Europees<br>netwerk</span></div>
-        <div class="hero-badge"><span class="num">✓</span><span class="lbl">Verzekerd en<br>gecertificeerd</span></div>
-        <div class="hero-badge"><span class="num">24/7</span><span class="lbl">Toegewijde<br>ondersteuning</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="route-card">
-        <img src="../camion-1.jpg" alt="IBK Euro Afrique vrachtwagen" style="width:100%; height:100%; object-fit:cover;">
-      </div>
-      <div class="float-card float-1"><span class="dot">⏱</span> 99% tijdige leveringen</div>
-      <div class="float-card float-2"><span class="dot">🎧</span> Ondersteuning 24/7</div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="wrap stats-grid">
-    <div><div class="stat-num">9</div><div class="stat-lbl">Landen gedekt</div></div>
-    <div><div class="stat-num">99%</div><div class="stat-lbl">Tijdige leveringen</div></div>
-    <div><div class="stat-num">50+</div><div class="stat-lbl">Partnervervoerders</div></div>
-    <div><div class="stat-num">24/7</div><div class="stat-lbl">Toegewijde ondersteuning</div></div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section class="services" id="services">
+<!-- PAGE HERO -->
+<section class="page-hero">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Wat wij doen</div>
-      <h2>Complete transport- en logistieke oplossingen</h2>
-      <p>Van complete ladingen tot expeditie, wij bieden end-to-end logistieke diensten op maat van uw bedrijf.</p>
-    </div>
-    <div class="svc-grid">
-      <div class="svc-card">
-        <div class="svc-icon">🚛</div>
-        <h3>FTL-vervoer</h3>
-        <p>Toegewijde complete ladingen door heel Europa, directe routes zonder overslag.</p>
-        <a href="service-ftl.html" class="lnk">Meer weten →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">📦</div>
-        <h3>LTL-vervoer</h3>
-        <p>Groupage voor economische en geoptimaliseerde deelzendingen.</p>
-        <a href="service-ltl.html" class="lnk">Meer weten →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">⚡</div>
-        <h3>Expresvracht</h3>
-        <p>Exprestransport voor dringende zendingen, gegarandeerde termijnen en prioritaire behandeling.</p>
-        <a href="service-express.html" class="lnk">Meer weten →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">🌍</div>
-        <h3>Internationaal Transport</h3>
-        <p>Grensoverschrijdende oplossingen in 9 Europese landen, inclusief douane-expertise.</p>
-        <a href="service-international.html" class="lnk">Meer weten →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">🤝</div>
-        <h3>Expeditie</h3>
-        <p>Volledig vrachtbeheer, van boeking tot uiteindelijke levering, met volledige zichtbaarheid.</p>
-        <a href="service-freight-forwarding.html" class="lnk">Meer weten →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section id="why">
-  <div class="wrap why-inner">
-    <div class="why-visual">
-      <img src="../camion-2.jpg" alt="IBK Euro Afrique wagenpark" style="width:100%; height:100%; object-fit:cover;">
-      <div class="why-badge">
-        <div class="num">500+</div>
-        <div class="lbl">Voertuigen via ons<br>partnernetwerk</div>
-      </div>
-    </div>
-    <div>
-      <div class="eyebrow">Waarom voor ons kiezen</div>
-      <h2 style="font-size:32px; color:var(--navy); margin-bottom:14px;">De partner die u kunt vertrouwen</h2>
-      <p style="color:var(--muted); font-size:15px; margin-bottom:34px;">Wij combineren gedegen logistieke expertise met moderne tools om een betrouwbare dienst in heel Europa te leveren.</p>
-      <div class="feat-list">
-        <div class="feat"><span class="ic">👥</span><div><h4>Ervaren team</h4><p>Meer dan 20 jaar gecombineerde ervaring in logistiek en wegtransport.</p></div></div>
-        <div class="feat"><span class="ic">🚚</span><div><h4>Vervoerdersnetwerk</h4><p>Een breed netwerk van gecontroleerde onderaannemers dat heel Europa dekt.</p></div></div>
-        <div class="feat"><span class="ic">📍</span><div><h4>Realtime tracking</h4><p>Live zichtbaarheid op uw zendingen, in elke fase.</p></div></div>
-        <div class="feat"><span class="ic">💶</span><div><h4>Concurrerende prijzen</h4><p>Transparante prijsstelling, afgestemd op marktindices.</p></div></div>
-        <div class="feat"><span class="ic">⏱</span><div><h4>Snelle levering</h4><p>Geoptimaliseerde routes en expresopties voor uw dringende zendingen.</p></div></div>
-        <div class="feat"><span class="ic">🎯</span><div><h4>Klanttevredenheid</h4><p>Een toegewijd aanspreekpunt voor elke klant, bij elke missie.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OUR TEAM -->
-<section class="services">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow">Achter IBK Euro Transport</div>
-      <h2>Een team toegewijd aan uw logistiek</h2>
-      <p>Persoonlijke begeleiding en responsieve klantenservice, in elke fase van uw zending.</p>
-    </div>
-    <div class="team-grid">
-      <div style="border-radius:16px; overflow:hidden; height:340px;">
-        <img src="../bureau-equipe.jpg" alt="IBK Euro Afrique team aan het werk" style="width:100%; height:100%; object-fit:cover;">
-      </div>
-      <div style="border-radius:16px; overflow:hidden; height:340px;">
-        <img src="../equipe-ibk.jpg" alt="IBK Euro Afrique team" style="width:100%; height:100%; object-fit:cover;">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- IBK CONNECT -->
-<section class="connect" id="connect">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow" style="color:#ff5fac;">Doe met ons mee</div>
-      <h2>IBK Connect — sluit u aan bij ons Europese logistieke netwerk</h2>
-      <p>Of u nu chauffeur, vervoerder of verlader bent — wij hebben een samenwerking die bij uw profiel past.</p>
-    </div>
-    <div class="connect-grid">
-      <div class="connect-card">
-        <div class="connect-ic">🚗</div>
-        <h3>Bent u vervoerder?</h3>
-        <p>Sluit u aan bij ons netwerk van onderaannemers en krijg toegang tot een gestage stroom van opdrachten in heel Europa.</p>
-        <a href="join.html#carrier" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Partner worden →</a>
-      </div>
-      <div class="connect-card">
-        <div class="connect-ic">🤝</div>
-        <h3>Bent u expediteur?</h3>
-        <p>Breid uw netwerk uit — krijg toegang tot onze capaciteit en onze Europese dekking.</p>
-        <a href="join.html#forwarder" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Doe met ons mee →</a>
-      </div>
-      <div class="connect-card">
-        <div class="connect-ic">📦</div>
-        <h3>Bent u verlader?</h3>
-        <p>Op zoek naar een betrouwbare transportpartner? Krijg een logistieke oplossing op maat.</p>
-        <a href="join.html#shipper" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Neem contact op →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section class="services">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow">IBK Euro Transport</div>
-      <h2>Onze prestaties en samenwerkingen</h2>
-      <p>Ontdek onze belangrijkste prestaties, lopende projecten en samenwerkingsmogelijkheden.</p>
-    </div>
-    <div class="ach-grid">
-      <div class="ach-card"><div class="ach-tag">Samenwerking</div><h4>Vervoerders</h4><p>Wij zoeken betrouwbare vervoerders in heel Europa om ons netwerk te versterken.</p></div>
-      <div class="ach-card"><div class="ach-tag">Samenwerking</div><h4>Expediteurs</h4><p>Breid uw dienstenaanbod uit door samen te werken met IBK Euro Transport.</p></div>
-      <div class="ach-card"><div class="ach-tag">Samenwerking</div><h4>Verladers en exporteurs</h4><p>Transportoplossingen op maat voor uw goederen.</p></div>
-      <div class="ach-card"><div class="ach-tag">Samenwerking</div><h4>Fabrikanten</h4><p>Transport- en supply chain-oplossingen voor industriële bedrijven.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- COVERAGE -->
-<section class="coverage">
-  <div class="wrap cov-inner">
-    <div>
-      <div class="eyebrow" style="color:#ff5fac;">Ons netwerk</div>
-      <h2 style="font-size:32px; margin-bottom:14px;">Dekking in heel Europa</h2>
-      <p style="color:rgba(255,255,255,.65); font-size:15px; margin-bottom:24px;">Wij zijn actief in 9 Europese landen, met Frankrijk als thuisbasis — snel, betrouwbaar en met volledige zichtbaarheid.</p>
-      <div class="cov-hq">
-        <div class="tag">Hoofdkantoor</div>
-        <div class="place">Garges-lès-Gonesse, Frankrijk</div>
-      </div>
-      <div class="cov-list">
-        <div>🇫🇷 Frankrijk</div><div>🇩🇪 Duitsland</div>
-        <div>🇧🇪 België</div><div>🇦🇹 Oostenrijk</div>
-        <div>🇳🇱 Nederland</div><div>🇨🇭 Zwitserland</div>
-        <div>🇪🇸 Spanje</div><div>🇵🇱 Polen</div>
-        <div>🇮🇹 Italië</div>
-      </div>
-    </div>
-    <div class="map-frame">
-      <svg viewBox="0 0 400 420" class="europe-map">
-        <g class="country ctx"><path d="M16,80 L34,72 L40,90 L36,110 L24,118 L12,105 Z"/><title>Ierland</title></g>
-        <g class="country ctx"><path d="M46,58 L71,52 L84,60 L88,85 L78,100 L84,115 L74,135 L58,140 L48,120 L54,100 L44,85 Z"/><title>Verenigd Koninkrijk</title></g>
-        <g class="country ctx"><path d="M32,288 L48,285 L52,320 L46,362 L34,360 L30,320 Z"/><title>Portugal</title></g>
-        <g class="country active"><path d="M54,268 L151,262 L158,300 L146,340 L116,368 L76,365 L56,335 L51,300 Z"/><title>Spanje</title></g>
-        <g class="country active"><path d="M96,175 L126,142 L161,148 L188,165 L184,205 L196,225 L174,260 L141,268 L104,245 L91,205 Z"/><title>Frankrijk</title></g>
-        <g class="country active"><path d="M176,132 L198,128 L202,148 L184,155 L174,145 Z"/><title>België</title></g>
-        <g class="country active"><path d="M188,100 L208,96 L216,112 L210,132 L192,130 L184,115 Z"/><title>Nederland</title></g>
-        <g class="country ctx"><path d="M218,58 L236,55 L242,72 L232,92 L220,88 L214,70 Z"/><title>Denemarken</title></g>
-        <g class="country active"><path d="M200,105 L236,98 L266,108 L278,140 L272,178 L281,205 L258,222 L228,220 L206,205 L194,175 L202,140 Z"/><title>Duitsland</title></g>
-        <g class="country active"><path d="M196,224 L222,220 L232,236 L220,250 L200,246 Z"/><title>Zwitserland</title></g>
-        <g class="country active"><path d="M230,224 L264,220 L290,232 L284,252 L252,256 L228,244 Z"/><title>Oostenrijk</title></g>
-        <g class="country ctx"><path d="M246,186 L278,182 L286,200 L274,218 L250,216 L242,200 Z"/><title>Tsjechië</title></g>
-        <g class="country active"><path d="M280,122 L326,118 L360,140 L354,178 L326,205 L292,208 L278,182 L284,150 Z"/><title>Polen</title></g>
-        <g class="country active"><path d="M208,252 L234,248 L254,255 L248,278 L260,300 L254,330 L264,355 L250,388 L240,384 L238,350 L226,320 L232,295 L214,278 Z"/><title>Italië</title></g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow">FAQ</div>
-      <h2>Veelgestelde vragen</h2>
-      <p>Alles wat u moet weten over onze transport- en logistieke diensten.</p>
-    </div>
-    <div class="faq-list" id="faqList">
-      <div class="faq-item">
-        <button class="faq-q">Welke soorten transport bieden jullie aan? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Wij bieden FTL (complete lading), LTL (groupage), express, internationaal transport, evenals volledige expeditie.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Hoe snel kan ik een offerte krijgen? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Ons team reageert binnen 24 uur met een logistieke oplossing op maat van uw behoeften.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Bieden jullie realtime tracking aan? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Ja, elke opdracht wordt gevolgd en u kunt op elk moment een statusupdate krijgen van uw toegewijde contactpersoon.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Welke landen dekken jullie? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Ons netwerk dekt 9 Europese landen, met Frankrijk als thuisbasis.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Welke soorten goederen vervoeren jullie? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Algemene goederen, pallets, pakketten, evenals oplossingen op maat van uw sector.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Zijn jullie diensten verzekerd? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Ja, elke opdracht is gedekt door een passende transportverzekering.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CAREERS -->
-<section id="careers" class="services">
-  <div class="wrap">
-    <div class="section-head center">
-      <div class="eyebrow">Word deel van het team</div>
-      <h2>Vacatures bij IBK Euro Transport</h2>
-      <p>Wij werven regelmatig expediteurs, commercieel en operationeel personeel aan om onze groei in Europa te ondersteunen. Stuur ons uw sollicitatie, wij reageren snel.</p>
-    </div>
-    <div style="text-align:center;">
-      <a href="mailto:contact@ibkeurotransport.eu" class="btn btn-pink">Open sollicitatie versturen</a>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section id="contact">
-  <div class="wrap">
-    <div class="final-cta">
+    <div class="crumb"><a href="index.html">Home</a> / <a href="index.html#services">Diensten</a> / Expeditie</div>
+    <div class="service-hero-inner">
+      <div class="service-hero-ic">🤝</div>
       <div>
-        <h2>Op zoek naar een transportpartner?</h2>
-        <p>Vraag vandaag nog uw gratis offerte aan — reactie binnen 24 uur.</p>
+        <h1>Expeditie</h1>
+        <p>Volledig vrachtbeheer, van boeking tot levering.</p>
       </div>
-      <a href="tel:+33185763070" class="btn btn-navy">+33 1 85 76 30 70</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:760px;">
+    <p style="font-size:15.5px; color:var(--ink); line-height:1.75;">Als expediteur organiseert IBK Euro Transport uw hele logistieke keten: selectie van de juiste vervoerder, onderhandeling, opvolging van de opdracht en administratief beheer — u heeft van begin tot eind slechts één aanspreekpunt.</p>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">De voordelen</div>
+      <h2>Waarom voor deze oplossing kiezen</h2>
+    </div>
+    <div class="service-benefits">
+      <div class="service-benefit">
+        <div class="ic">🎯</div>
+        <div>
+          <h4>De juiste vervoerder</h4>
+          <p>Wij selecteren uit ons netwerk de vervoerder die het beste past bij uw specifieke behoeften (voertuigtype, gebied, termijn).</p>
+        </div>
+      </div>
+      <div class="service-benefit">
+        <div class="ic">📊</div>
+        <div>
+          <h4>Volledige zichtbaarheid</h4>
+          <p>Gecentraliseerde opvolging van uw opdracht, van ophaling tot levering.</p>
+        </div>
+      </div>
+      <div class="service-benefit">
+        <div class="ic">📄</div>
+        <div>
+          <h4>Administratief beheer</h4>
+          <p>Wij zorgen voor de documentaire coördinatie en de opvolging van de opdracht.</p>
+        </div>
+      </div>
+      <div class="service-benefit">
+        <div class="ic">💼</div>
+        <div>
+          <h4>Flexibiliteit</h4>
+          <p>Een oplossing die zich zowel aanpast aan een eenmalige behoefte als aan een terugkerende samenwerking.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:640px;">
+    <div class="section-head center">
+      <div class="eyebrow">Is dit iets voor u?</div>
+      <h2>Deze oplossing is ideaal als</h2>
+    </div>
+    <ul class="service-list"><li>Bedrijven zonder eigen wagenpark</li><li>Behoefte aan flexibiliteit afhankelijk van volumes en periodes</li><li>Op zoek naar een partner om de relatie met vervoerders te beheren</li><li>Wens om het dagelijkse logistieke beheer te vereenvoudigen</li></ul>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <div class="final-cta" style="margin-bottom:50px;">
+      <div>
+        <h2>Heeft u expeditie nodig?</h2>
+        <p>Vertel ons over uw project, wij reageren binnen 24 uur met een passende oplossing.</p>
+      </div>
+      <a href="contact.html" class="btn btn-navy">Offerte aanvragen →</a>
+    </div>
+    <div class="section-head center">
+      <div class="eyebrow">Andere diensten</div>
+      <h2>Ontdek onze andere oplossingen</h2>
+    </div>
+    <div class="other-services">
+      <a href="service-ftl.html" class="other-service-card" style="display:block;">
+        <div class="ic">🚛</div>
+        <h5>FTL-vervoer</h5>
+      </a>
+      <a href="service-ltl.html" class="other-service-card" style="display:block;">
+        <div class="ic">📦</div>
+        <h5>LTL-vervoer</h5>
+      </a>
+      <a href="service-express.html" class="other-service-card" style="display:block;">
+        <div class="ic">⚡</div>
+        <h5>Expresvracht</h5>
+      </a>
+      <a href="service-international.html" class="other-service-card" style="display:block;">
+        <div class="ic">🌍</div>
+        <h5>Internationaal Transport</h5>
+      </a>
     </div>
   </div>
 </section>
