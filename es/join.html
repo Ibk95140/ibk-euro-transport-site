@@ -278,12 +278,14 @@
   .cov-hq .tag{font-size:11px; font-weight:700; text-transform:uppercase; color:var(--pink); letter-spacing:.05em;}
   .cov-hq .place{font-family:'Space Grotesk'; font-weight:700; font-size:19px; margin-top:4px;}
   .map-frame{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:20px;}
-  .europe-map{width:100%; height:auto; max-height:420px;}
-  .europe-map .country path{stroke:rgba(13,27,42,.5); stroke-width:1;}
-  .europe-map .country.ctx path{fill:rgba(255,255,255,.08);}
-  .europe-map .country.active path{fill:var(--pink); transition:fill .15s;}
-  .europe-map .country.active:hover path{fill:#ff4fa0;}
-  .europe-map .country title{pointer-events:none;}
+  .europe-map{width:100%; height:auto; max-height:440px;}
+  .europe-map .country{stroke:rgba(13,27,42,.6); stroke-width:0.5; transition:fill .15s;}
+  .europe-map .country.ctx{fill:rgba(255,255,255,.09);}
+  .europe-map .country.active{fill:var(--pink);}
+  .europe-map .country.active:hover{fill:#ff4fa0;}
+  .europe-map text{font-family:'Inter',sans-serif; pointer-events:none;}
+  .europe-map .label-active{fill:#fff; font-weight:700;}
+  .europe-map .label-ctx{fill:rgba(255,255,255,.5); font-weight:500;}
 
   /* ===== FAQ ===== */
   .faq-list{max-width:760px; margin:0 auto;}
@@ -519,7 +521,7 @@
     </div>
     <div class="form-card">
       <h3 style="font-size:17px; color:var(--navy); margin-bottom:18px;">Convertirse en transportista asociado</h3>
-      <form onsubmit="event.preventDefault(); submitDemande(this, 'transporteur', {nom:'Contact', entreprise:'Entreprise', email:'E-mail', telephone:'Téléphone', siret:'SIRET', message:'Zone'}, 'Candidatura de transportista — IBK Connect', 'contact@ibkeurotransport.eu');">
+      <form onsubmit="event.preventDefault(); submitDemande(this, 'transporteur', {nom:'Contact', entreprise:'Entreprise', email:'E-mail', telephone:'Téléphone', siret:'SIRET', message:'Zone'}, 'Candidatura de transportista — IBK Connect', 'info@ibk-eurotransport.com');">
         <div class="f-row">
           <div class="f-field"><label>Nombre de la empresa *</label><input class="f-input" name="Entreprise" required></div>
           <div class="f-field"><label>Número de registro</label><input class="f-input" name="SIRET"></div>
@@ -551,7 +553,7 @@
     </div>
     <div class="form-card">
       <h3 style="font-size:17px; color:var(--navy); margin-bottom:18px;">Únase como transitario</h3>
-      <form onsubmit="event.preventDefault(); submitDemande(this, 'commissionnaire', {nom:'Contact', entreprise:'Entreprise', email:'E-mail', telephone:'Téléphone', siret:'SIRET', message:'Message'}, 'Candidatura de transitario — IBK Connect', 'contact@ibkeurotransport.eu');">
+      <form onsubmit="event.preventDefault(); submitDemande(this, 'commissionnaire', {nom:'Contact', entreprise:'Entreprise', email:'E-mail', telephone:'Téléphone', siret:'SIRET', message:'Message'}, 'Candidatura de transitario — IBK Connect', 'info@ibk-eurotransport.com');">
         <div class="f-row">
           <div class="f-field"><label>Nombre de la empresa *</label><input class="f-input" name="Entreprise" required></div>
           <div class="f-field"><label>Número de registro</label><input class="f-input" name="SIRET"></div>
@@ -582,7 +584,7 @@
     </div>
     <div class="form-card">
       <h3 style="font-size:17px; color:var(--navy); margin-bottom:18px;">Solicitar una solución a medida</h3>
-      <form onsubmit="event.preventDefault(); submitDemande(this, 'chargeur', {nom:'Contact', entreprise:'Entreprise', email:'E-mail', telephone:'Téléphone', message:'Besoin'}, 'Solicitud de cargador — IBK Connect', 'contact@ibkeurotransport.eu');">
+      <form onsubmit="event.preventDefault(); submitDemande(this, 'chargeur', {nom:'Contact', entreprise:'Entreprise', email:'E-mail', telephone:'Téléphone', message:'Besoin'}, 'Solicitud de cargador — IBK Connect', 'info@ibk-eurotransport.com');">
         <div class="f-row">
           <div class="f-field"><label>Nombre de la empresa *</label><input class="f-input" name="Entreprise" required></div>
           <div class="f-field"><label>Sector de actividad</label><input class="f-input" name="Secteur"></div>
@@ -610,8 +612,7 @@
         </div>
         <p>IBK Euro Transport es una empresa de transporte y logística que opera en toda Europa.</p>
         <p style="margin-top:14px;">📞 <a href="tel:+33185763070">+33 1 85 76 30 70</a></p>
-        <p style="margin-top:6px;">✉️ contact@ibkeurotransport.eu
-          <span class="placeholder-note">⚠️ correo temporal, a la espera del dominio</span>
+        <p style="margin-top:6px;">✉️ info@ibk-eurotransport.com
         </p>
         <p style="margin-top:10px;">17-19 Boulevard de la Muette<br>95140 Garges-lès-Gonesse, Francia</p>
       </div>
