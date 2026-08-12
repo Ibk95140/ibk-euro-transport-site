@@ -1,1 +1,776 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Transport Międzynarodowy — IBK Euro Transport</title>
+<meta name="description" content="Transport międzynarodowy z IBK Euro Transport: Twój towar dostarczany w całej Europie, w 9 krajach." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root{
+    --navy:#0d1b2a;
+    --navy-2:#12233a;
+    --pink:#d4006e;
+    --pink-light:#fdf0f6;
+    --ink:#1c2733;
+    --muted:#64748b;
+    --line:#e7e9ee;
+    --bg:#fafafa;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:#fff;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.disp{font-family:'Space Grotesk',sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px; border-radius:8px; font-weight:700; font-size:14.5px;
+    cursor:pointer; border:none; transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-pink{background:var(--pink); color:#fff; box-shadow:0 8px 20px rgba(212,0,110,.28);}
+  .btn-pink:hover{background:#b3005d;}
+  .btn-outline{background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.35);}
+  .btn-outline:hover{border-color:#fff; background:rgba(255,255,255,.06);}
+  .btn-navy{background:var(--navy); color:#fff;}
+  .btn-navy:hover{background:var(--navy-2);}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--pink); margin-bottom:16px;
+  }
+  .eyebrow::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--pink); display:inline-block;}
+  section{padding:88px 0;}
+  @media (max-width:768px){ section{padding:56px 0;} }
 
+  /* ===== TOPBAR TICKER ===== */
+  .topbar{background:var(--navy); color:rgba(255,255,255,.72); font-size:12.5px; overflow:hidden; position:relative;}
+  .topbar::before, .topbar::after{
+    content:''; position:absolute; top:0; bottom:0; width:40px; z-index:2; pointer-events:none;
+  }
+  .topbar::before{left:0; background:linear-gradient(90deg, var(--navy), transparent);}
+  .topbar::after{right:0; background:linear-gradient(270deg, var(--navy), transparent);}
+  .ticker-track{
+    display:flex; align-items:center; white-space:nowrap;
+    animation:ticker-scroll 38s linear infinite;
+    width:max-content;
+  }
+  .topbar:hover .ticker-track{animation-play-state:paused;}
+  .ticker-item{padding:9px 30px; display:inline-flex; align-items:center; gap:8px; flex-shrink:0;}
+  .ticker-item .sep{color:var(--pink); font-weight:700;}
+  @keyframes ticker-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;}
+  }
+
+  /* ===== LANG DROPDOWN ===== */
+  .lang-wrap{position:relative;}
+  .lang-btn{
+    display:flex; align-items:center; gap:6px; background:none; border:1px solid var(--line);
+    border-radius:8px; padding:8px 12px; font-size:13px; font-weight:600; color:var(--ink);
+    cursor:pointer; font-family:'Inter';
+  }
+  .lang-btn:hover{border-color:var(--pink); color:var(--pink);}
+  .lang-btn .chev{font-size:10px; transition:transform .15s;}
+  .lang-wrap.open .chev{transform:rotate(180deg);}
+  .lang-menu{
+    position:absolute; top:calc(100% + 8px); right:0; background:#fff; border:1px solid var(--line);
+    border-radius:10px; box-shadow:0 14px 34px rgba(13,27,42,.14); overflow:hidden; min-width:160px;
+    display:none; z-index:60;
+  }
+  .lang-wrap.open .lang-menu{display:block;}
+  .lang-opt{
+    display:flex; align-items:center; gap:10px; padding:11px 14px; font-size:13px; font-weight:600;
+    color:var(--ink); cursor:pointer; border:none; background:none; width:100%; text-align:left; font-family:'Inter';
+  }
+  .lang-opt:hover{background:var(--pink-light); color:var(--pink);}
+  .lang-opt.active{color:var(--pink); background:var(--pink-light);}
+  .lang-opt .flag{font-size:15px;}
+  .lang-opt .soon{margin-left:auto; font-size:10px; text-transform:uppercase; color:var(--muted); font-weight:700;}
+
+  /* ===== HEADER ===== */
+  header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line);}
+  .header-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; color:var(--navy);}
+  .logo-mark{width:38px; height:38px; border-radius:9px; background:linear-gradient(135deg, var(--pink), #ff4fa0); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:14px;}
+  .logo small{display:block; font-family:'Inter'; font-weight:600; font-size:10px; letter-spacing:.12em; color:var(--pink); margin-top:1px;}
+  nav.main-nav{display:flex; gap:34px; align-items:center;}
+  nav.main-nav a{font-size:14px; font-weight:600; color:var(--ink);}
+  nav.main-nav a:hover{color:var(--pink);}
+  .nav-pill{background:var(--pink-light); color:var(--pink) !important; padding:7px 14px; border-radius:20px;}
+  .nav-dropdown{position:relative;}
+  .nav-drop-btn{
+    display:flex; align-items:center; gap:5px; background:none; border:none; cursor:pointer;
+    font-size:14px; font-weight:600; color:var(--ink); font-family:'Inter'; padding:0;
+  }
+  .nav-drop-btn:hover{color:var(--pink);}
+  .nav-drop-btn.nav-pill{background:var(--pink-light); color:var(--pink); padding:7px 14px; border-radius:20px;}
+  .nav-drop-btn .chev{font-size:9px; transition:transform .15s;}
+  .nav-dropdown:hover .nav-drop-btn .chev{transform:rotate(180deg);}
+  .nav-drop-menu{
+    position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%);
+    background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 16px 36px rgba(13,27,42,.14);
+    padding:8px; min-width:220px; opacity:0; visibility:hidden; transition:opacity .15s, visibility .15s;
+    z-index:60;
+  }
+  .nav-dropdown:hover .nav-drop-menu{opacity:1; visibility:visible;}
+  .nav-drop-menu a{display:block; padding:9px 12px; border-radius:8px; font-size:13px; font-weight:500; white-space:nowrap;}
+  .nav-drop-menu a:hover{background:var(--pink-light); color:var(--pink);}
+  .header-right{display:flex; align-items:center; gap:18px;}
+  .burger{display:none; flex-direction:column; gap:4px; cursor:pointer; background:none; border:none;}
+  .burger span{width:22px; height:2px; background:var(--navy);}
+  @media (max-width:900px){
+    nav.main-nav{display:none;}
+    .header-right .btn-pink{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(160deg, var(--navy) 0%, #16283f 55%, var(--navy) 100%);
+    color:#fff; padding:100px 0 120px;
+  }
+  .hero::before{
+    content:''; position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 82% 18%, rgba(212,0,110,.35), transparent 45%),
+      radial-gradient(circle at 8% 90%, rgba(212,0,110,.18), transparent 40%);
+    pointer-events:none;
+  }
+  .hero-route{position:absolute; inset:0; opacity:.16; pointer-events:none;}
+  .hero-inner{position:relative; display:grid; grid-template-columns:1.05fr .95fr; gap:50px; align-items:center;}
+  @media (max-width:900px){ .hero-inner{grid-template-columns:1fr;} }
+  .hero h1{font-size:52px; line-height:1.06; font-weight:700; margin-bottom:20px;}
+  .hero h1 span{color:var(--pink);}
+  @media (max-width:640px){ .hero h1{font-size:36px;} }
+  .hero p.lead{font-size:17px; color:rgba(255,255,255,.72); max-width:480px; margin-bottom:34px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:38px;}
+  .hero-badges{display:flex; gap:26px; flex-wrap:wrap;}
+  .hero-badge{display:flex; align-items:center; gap:10px;}
+  .hero-badge .num{font-family:'Space Grotesk'; font-weight:700; font-size:20px; color:#fff;}
+  .hero-badge .lbl{font-size:11.5px; color:rgba(255,255,255,.55); text-transform:uppercase; letter-spacing:.04em;}
+
+  .hero-visual{position:relative; height:420px;}
+  .route-card{
+    position:absolute; inset:0; border-radius:20px; overflow:hidden;
+    background:linear-gradient(135deg, #16283f, #0a1420);
+    border:1px solid rgba(255,255,255,.08);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .route-card svg{width:88%; height:auto; opacity:.9;}
+  .float-card{
+    position:absolute; background:#fff; color:var(--ink); border-radius:12px;
+    padding:12px 16px; box-shadow:0 16px 40px rgba(0,0,0,.28);
+    display:flex; align-items:center; gap:10px; font-size:12.5px; font-weight:700;
+  }
+  .float-card .dot{width:34px; height:34px; border-radius:9px; background:var(--pink-light); color:var(--pink); display:flex; align-items:center; justify-content:center; font-size:16px;}
+  .float-1{top:14px; right:-6px;}
+  .float-2{bottom:22px; left:-10px;}
+  @media (max-width:900px){ .float-1,.float-2{position:static; margin-top:12px; display:inline-flex;} }
+
+  /* ===== STATS STRIP ===== */
+  .stats{background:#fff; border-bottom:1px solid var(--line);}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); text-align:center; padding:44px 0;}
+  .stats-grid > div{border-right:1px solid var(--line);}
+  .stats-grid > div:last-child{border-right:none;}
+  .stat-num{font-family:'Space Grotesk'; font-weight:700; font-size:34px; color:var(--navy);}
+  .stat-lbl{font-size:12.5px; color:var(--muted); margin-top:4px; text-transform:uppercase; letter-spacing:.03em;}
+  @media (max-width:700px){
+    .stats-grid{grid-template-columns:repeat(2,1fr); gap:24px 0;}
+    .stats-grid > div{border-right:none;}
+  }
+
+  /* ===== SECTION HEAD ===== */
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-head h2{font-size:34px; font-weight:700; color:var(--navy); line-height:1.15;}
+  .section-head p{color:var(--muted); font-size:15.5px; margin-top:14px;}
+
+  /* ===== SERVICES ===== */
+  .services{background:var(--bg);}
+  .svc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:900px){ .svc-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .svc-grid{grid-template-columns:1fr;} }
+  .svc-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:28px; transition:box-shadow .2s, transform .2s;}
+  .svc-card:hover{box-shadow:0 16px 34px rgba(13,27,42,.08); transform:translateY(-3px); border-color:transparent;}
+  .svc-icon{width:46px; height:46px; border-radius:11px; background:var(--pink-light); color:var(--pink); display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:18px;}
+  .svc-card h3{font-size:17px; color:var(--navy); margin-bottom:8px;}
+  .svc-card p{font-size:13.5px; color:var(--muted); margin-bottom:16px;}
+  .svc-card .lnk{font-size:13px; font-weight:700; color:var(--pink);}
+  .team-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:20px;}
+  @media (max-width:700px){ .team-grid{grid-template-columns:1fr;} .team-grid > div{height:260px !important;} }
+
+  /* ===== WHY CHOOSE US ===== */
+  .why-inner{display:grid; grid-template-columns:.85fr 1.15fr; gap:60px; align-items:center;}
+  @media (max-width:900px){ .why-inner{grid-template-columns:1fr;} }
+  .why-visual{position:relative; border-radius:18px; overflow:hidden; height:400px; background:linear-gradient(150deg,var(--navy),#1a3350);}
+  .why-visual svg{position:absolute; inset:0; width:100%; height:100%; opacity:.9;}
+  .why-badge{
+    position:absolute; bottom:20px; right:20px; background:#fff; border-radius:12px; padding:16px 20px;
+    box-shadow:0 16px 34px rgba(0,0,0,.25);
+  }
+  .why-badge .num{font-family:'Space Grotesk'; font-weight:700; font-size:26px; color:var(--pink);}
+  .why-badge .lbl{font-size:11.5px; color:var(--muted);}
+  .feat-list{display:grid; grid-template-columns:1fr 1fr; gap:26px 28px;}
+  @media (max-width:520px){ .feat-list{grid-template-columns:1fr;} }
+  .feat{display:flex; gap:13px; align-items:flex-start;}
+  .feat .ic{width:38px; height:38px; border-radius:10px; background:var(--pink-light); color:var(--pink); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;}
+  .feat h4{font-size:14.5px; color:var(--navy); margin-bottom:4px;}
+  .feat p{font-size:12.5px; color:var(--muted); line-height:1.5;}
+
+  /* ===== IBK CONNECT ===== */
+  .connect{
+    background:linear-gradient(160deg, var(--navy), #16283f);
+    color:#fff;
+  }
+  .connect .section-head h2, .connect .section-head p{color:#fff;}
+  .connect .section-head p{color:rgba(255,255,255,.6);}
+  .connect-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:800px){ .connect-grid{grid-template-columns:1fr;} }
+  .connect-card{
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:30px;
+    transition:border-color .2s, background .2s;
+  }
+  .connect-card:hover{border-color:var(--pink); background:rgba(255,255,255,.06);}
+  .connect-ic{width:44px; height:44px; border-radius:11px; background:var(--pink); display:flex; align-items:center; justify-content:center; font-size:19px; margin-bottom:20px;}
+  .connect-card h3{font-size:18px; margin-bottom:8px;}
+  .connect-card p{font-size:13.5px; color:rgba(255,255,255,.6); margin-bottom:20px; line-height:1.55;}
+
+  /* ===== ACHIEVEMENTS ===== */
+  .ach-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:48px;}
+  @media (max-width:700px){ .ach-stats{grid-template-columns:repeat(2,1fr);} }
+  .ach-stat{background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px; text-align:center;}
+  .ach-stat .num{font-family:'Space Grotesk'; font-weight:700; font-size:28px; color:var(--pink);}
+  .ach-stat .lbl{font-size:12px; color:var(--muted); margin-top:2px;}
+  .ach-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:900px){ .ach-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .ach-grid{grid-template-columns:1fr;} }
+  .ach-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px;}
+  .ach-tag{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--pink); margin-bottom:10px;}
+  .ach-card h4{font-size:15px; color:var(--navy); margin-bottom:8px;}
+  .ach-card p{font-size:12.5px; color:var(--muted); line-height:1.5;}
+
+  /* ===== COVERAGE ===== */
+  .coverage{background:var(--navy); color:#fff;}
+  .coverage .section-head h2, .coverage .section-head p{color:#fff;}
+  .coverage .section-head p{color:rgba(255,255,255,.6);}
+  .cov-inner{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;}
+  @media (max-width:800px){ .cov-inner{grid-template-columns:1fr;} }
+  .cov-list{display:grid; grid-template-columns:1fr 1fr; gap:12px 26px;}
+  .cov-list div{font-size:14px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.08); color:rgba(255,255,255,.85);}
+  .cov-hq{background:rgba(212,0,110,.12); border:1px solid rgba(212,0,110,.35); border-radius:12px; padding:20px; margin-bottom:22px;}
+  .cov-hq .tag{font-size:11px; font-weight:700; text-transform:uppercase; color:var(--pink); letter-spacing:.05em;}
+  .cov-hq .place{font-family:'Space Grotesk'; font-weight:700; font-size:19px; margin-top:4px;}
+  .map-frame{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:20px;}
+  .europe-map{width:100%; height:auto; max-height:420px;}
+  .europe-map .country path{stroke:rgba(13,27,42,.5); stroke-width:1;}
+  .europe-map .country.ctx path{fill:rgba(255,255,255,.08);}
+  .europe-map .country.active path{fill:var(--pink); transition:fill .15s;}
+  .europe-map .country.active:hover path{fill:#ff4fa0;}
+  .europe-map .country title{pointer-events:none;}
+
+  /* ===== FAQ ===== */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding:20px 4px; display:flex; justify-content:space-between; align-items:center;
+    font-size:15px; font-weight:600; color:var(--navy); font-family:'Inter';
+  }
+  .faq-q .plus{font-size:20px; color:var(--pink); transition:transform .2s; flex-shrink:0; margin-left:16px;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{font-size:13.5px; color:var(--muted); padding:0 4px 20px; line-height:1.6;}
+
+  /* ===== FINAL CTA ===== */
+  .final-cta{
+    background:linear-gradient(120deg, var(--pink), #ff2e8f);
+    border-radius:22px; padding:52px 46px; color:#fff;
+    display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;
+  }
+  .final-cta h2{font-size:27px; margin-bottom:8px;}
+  .final-cta p{font-size:14.5px; color:rgba(255,255,255,.85);}
+  .final-cta .btn-navy{background:#fff; color:var(--pink);}
+  .final-cta .btn-navy:hover{background:#f3f3f3;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy); color:rgba(255,255,255,.6); padding:70px 0 26px; font-size:13.5px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.1fr; gap:40px; margin-bottom:50px;}
+  @media (max-width:800px){ .foot-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .foot-grid{grid-template-columns:1fr;} }
+  .foot-grid h5{color:#fff; font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:18px;}
+  .foot-grid li{list-style:none; margin-bottom:11px;}
+  .foot-grid a:hover{color:#fff;}
+  .foot-logo{display:flex; align-items:center; gap:10px; margin-bottom:16px;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12.5px;}
+  .foot-bottom a{margin-left:18px;}
+  .foot-bottom a:first-child{margin-left:0;}
+
+  .placeholder-note{
+    background:#fff3cd; border:1px solid #ffe08a; color:#7a5b00; font-size:12px;
+    padding:6px 10px; border-radius:6px; display:inline-block; margin-top:8px;
+  }
+
+  /* ===== PAGE HERO (sous-pages) ===== */
+  .page-hero{
+    background:linear-gradient(160deg, var(--navy) 0%, #16283f 55%, var(--navy) 100%);
+    color:#fff; padding:64px 0 56px; position:relative; overflow:hidden;
+  }
+  .page-hero::before{
+    content:''; position:absolute; inset:0;
+    background-image: radial-gradient(circle at 85% 20%, rgba(212,0,110,.3), transparent 45%);
+    pointer-events:none;
+  }
+  .page-hero .crumb{font-size:12.5px; color:rgba(255,255,255,.5); margin-bottom:14px;}
+  .page-hero .crumb a{color:rgba(255,255,255,.75);}
+  .page-hero h1{font-size:38px; font-weight:700; position:relative;}
+  .page-hero p{color:rgba(255,255,255,.65); font-size:15.5px; margin-top:12px; max-width:560px; position:relative;}
+
+  /* ===== FORM ELEMENTS ===== */
+  .f-field{margin-bottom:18px;}
+  .f-field label{display:block; font-size:12.5px; font-weight:700; color:var(--navy); margin-bottom:7px;}
+  .f-input, .f-select, .f-textarea{
+    width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:9px;
+    font-family:'Inter'; font-size:14px; color:var(--ink); background:#fff;
+  }
+  .f-input:focus, .f-select:focus, .f-textarea:focus{outline:none; border-color:var(--pink);}
+  .f-textarea{resize:vertical; min-height:110px;}
+  .f-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:560px){ .f-row{grid-template-columns:1fr;} }
+  .f-submit{width:100%; justify-content:center; margin-top:6px;}
+  .form-note{font-size:12px; color:var(--muted); margin-top:12px;}
+
+  /* ===== CONTACT PAGE ===== */
+  .contact-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:44px; align-items:start;}
+  @media (max-width:850px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-info-card{background:var(--bg); border:1px solid var(--line); border-radius:16px; padding:26px; margin-bottom:16px;}
+  .contact-info-card .ic{width:40px; height:40px; border-radius:10px; background:var(--pink-light); color:var(--pink); display:flex; align-items:center; justify-content:center; font-size:17px; margin-bottom:12px;}
+  .contact-info-card h4{font-size:14.5px; color:var(--navy); margin-bottom:4px;}
+  .contact-info-card p{font-size:13.5px; color:var(--muted);}
+  .form-card{background:#fff; border:1px solid var(--line); border-radius:18px; padding:34px; box-shadow:0 20px 50px rgba(13,27,42,.06);}
+
+  /* ===== ABOUT PAGE ===== */
+  .value-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:900px){ .value-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .value-grid{grid-template-columns:1fr;} }
+  .value-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px; text-align:center;}
+  .value-card .ic{width:44px; height:44px; border-radius:11px; background:var(--pink-light); color:var(--pink); display:flex; align-items:center; justify-content:center; font-size:19px; margin:0 auto 14px;}
+  .value-card h4{font-size:14.5px; color:var(--navy); margin-bottom:6px;}
+  .value-card p{font-size:12.5px; color:var(--muted); line-height:1.5;}
+  .timeline{border-left:2px solid var(--line); padding-left:24px; margin-left:6px;}
+  .timeline-item{position:relative; padding-bottom:28px;}
+  .timeline-item::before{content:''; position:absolute; left:-30px; top:2px; width:12px; height:12px; border-radius:50%; background:var(--pink); border:3px solid var(--pink-light);}
+  .timeline-item .yr{font-family:'Space Grotesk'; font-weight:700; color:var(--pink); font-size:13px;}
+  .timeline-item h4{font-size:15px; color:var(--navy); margin:4px 0 6px;}
+  .timeline-item p{font-size:13px; color:var(--muted); line-height:1.5;}
+
+  /* ===== REJOINDRE PAGE ===== */
+  .role-nav{display:flex; gap:10px; margin-bottom:0; flex-wrap:wrap;}
+  .role-nav a{background:var(--bg); border:1px solid var(--line); border-radius:24px; padding:9px 18px; font-size:13px; font-weight:700; color:var(--navy);}
+  .role-nav a:hover{border-color:var(--pink); color:var(--pink);}
+  .role-section{padding:70px 0; border-top:1px solid var(--line);}
+  .role-inner{display:grid; grid-template-columns:.9fr 1.1fr; gap:44px; align-items:start;}
+  @media (max-width:850px){ .role-inner{grid-template-columns:1fr;} }
+  .role-badge{width:52px; height:52px; border-radius:14px; background:var(--pink); color:#fff; display:flex; align-items:center; justify-content:center; font-size:23px; margin-bottom:18px;}
+  .role-benefits{list-style:none; margin-top:20px;}
+  .role-benefits li{display:flex; gap:10px; font-size:13.5px; color:var(--ink); margin-bottom:11px; align-items:flex-start;}
+  .role-benefits li::before{content:'✓'; color:var(--pink); font-weight:700; flex-shrink:0;}
+
+  /* ===== SERVICE DETAIL PAGE ===== */
+  .service-hero-inner{display:flex; align-items:center; gap:20px;}
+  .service-hero-ic{width:64px; height:64px; border-radius:16px; background:rgba(212,0,110,.15); border:1px solid rgba(212,0,110,.35); display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0;}
+  .service-benefits{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  @media (max-width:700px){ .service-benefits{grid-template-columns:1fr;} }
+  .service-benefit{display:flex; gap:16px; padding:22px; background:#fff; border:1px solid var(--line); border-radius:14px;}
+  .service-benefit .ic{width:42px; height:42px; border-radius:11px; background:var(--pink-light); color:var(--pink); display:flex; align-items:center; justify-content:center; font-size:19px; flex-shrink:0;}
+  .service-benefit h4{font-size:14.5px; color:var(--navy); margin-bottom:6px;}
+  .service-benefit p{font-size:13px; color:var(--muted); line-height:1.55;}
+  .service-list{list-style:none;}
+  .service-list li{display:flex; gap:10px; font-size:14px; color:var(--ink); margin-bottom:13px; align-items:flex-start; line-height:1.5;}
+  .service-list li::before{content:'✓'; color:var(--pink); font-weight:700; flex-shrink:0;}
+  .other-services{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  @media (max-width:800px){ .other-services{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .other-services{grid-template-columns:1fr;} }
+  .other-service-card{background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px; text-align:center;}
+  .other-service-card .ic{font-size:24px; margin-bottom:10px;}
+  .other-service-card h5{font-size:13px; color:var(--navy);}
+
+</style>
+</head>
+<body>
+
+<!-- TOPBAR TICKER -->
+<div class="topbar">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item">📞 <a href="tel:+33185763070" style="color:#fff;">+33 1 85 76 30 70</a></span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🕗 Pon–Sob: 8:00–18:00</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🌍 Sieć obecna w 9 krajach europejskich</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">✅ 99% dostaw na czas</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🚛 50+ przewoźników partnerskich w naszej sieci</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🚗 Przewoźnicy — dołączcie do naszej sieci podwykonawców</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">🤝 Spedytorzy — rozwijajmy razem nasz zasięg w Europie</span>
+    <span class="sep">•</span>
+    <span class="ticker-item">📦 Nadawcy — otrzymajcie wycenę na miarę w 24h</span>
+    <span class="sep">•</span>
+    <span class="ticker-item"><a href="index.html#careers" style="color:#fff;">💼 Kariera — rekrutujemy</a></span>
+    <span class="sep">•</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">IBK</span>
+      <span>IBK EURO<br><small>TRANSPORT</small></span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Strona główna</a>
+      <a href="about.html">O nas</a>
+      <div class="nav-dropdown">
+        <button class="nav-drop-btn">Usługi <span class="chev">▾</span></button>
+        <div class="nav-drop-menu">
+          <a href="service-ftl.html">🚛 Transport FTL</a>
+          <a href="service-ltl.html">📦 Transport LTL</a>
+          <a href="service-express.html">⚡ Transport Ekspresowy</a>
+          <a href="service-international.html">🌍 Transport Międzynarodowy</a>
+          <a href="service-freight-forwarding.html">🤝 Spedycja</a>
+        </div>
+      </div>
+      <a href="index.html#careers">Kariera</a>
+      <div class="nav-dropdown">
+        <button class="nav-drop-btn nav-pill">IBK Connect <span class="chev">▾</span></button>
+        <div class="nav-drop-menu">
+          <a href="join.html#carrier">🚗 Jesteś przewoźnikiem</a>
+          <a href="join.html#forwarder">🤝 Jesteś spedytorem</a>
+          <a href="join.html#shipper">📦 Jesteś nadawcą</a>
+        </div>
+      </div>
+      <a href="contact.html">Kontakt</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-wrap" id="langWrap">
+        <button class="lang-btn" id="langBtn">🌐 PL <span class="chev">▾</span></button>
+        <div class="lang-menu">
+          <a class="lang-opt" href="../service-international.html"><span class="flag">🇫🇷</span> Français</a>
+          <a class="lang-opt" href="../en/service-international.html"><span class="flag">🇬🇧</span> English</a>
+          <a class="lang-opt" href="../de/service-international.html"><span class="flag">🇩🇪</span> Deutsch</a>
+          <a class="lang-opt" href="../es/service-international.html"><span class="flag">🇪🇸</span> Español</a>
+          <a class="lang-opt" href="../it/service-international.html"><span class="flag">🇮🇹</span> Italiano</a>
+          <a class="lang-opt" href="../nl/service-international.html"><span class="flag">🇳🇱</span> Nederlands</a>
+          <button class="lang-opt active" data-lang="pl"><span class="flag">🇵🇱</span> Polski</button>
+        </div>
+      </div>
+      <a href="contact.html" class="btn btn-pink">Poproś o wycenę</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Strona główna</a> / <a href="index.html#services">Usługi</a> / Transport Międzynarodowy</div>
+    <div class="service-hero-inner">
+      <div class="service-hero-ic">🌍</div>
+      <div>
+        <h1>Transport Międzynarodowy</h1>
+        <p>Twój towar dostarczany w całej Europie, bez komplikacji dla Ciebie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:760px;">
+    <p style="font-size:15.5px; color:var(--ink); line-height:1.75;">Organizujemy Twój transport transgraniczny za pośrednictwem naszej sieci w 9 krajach europejskich. Z Francji do Niemiec, Hiszpanii, Włoch, Polski i dalej — zarządzamy koordynacją między przewoźnikami i specyfiką każdej trasy międzynarodowej.</p>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Zalety</div>
+      <h2>Dlaczego warto wybrać to rozwiązanie</h2>
+    </div>
+    <div class="service-benefits">
+      <div class="service-benefit">
+        <div class="ic">🗺️</div>
+        <div>
+          <h4>Zasięg europejski</h4>
+          <p>Sieć przewoźników partnerskich w 9 krajach dla tras bezpośrednich lub łączonych.</p>
+        </div>
+      </div>
+      <div class="service-benefit">
+        <div class="ic">📑</div>
+        <div>
+          <h4>Wsparcie dokumentacyjne</h4>
+          <p>Wsparcie w zakresie dokumentów transportowych niezbędnych dla tras transgranicznych.</p>
+        </div>
+      </div>
+      <div class="service-benefit">
+        <div class="ic">🤝</div>
+        <div>
+          <h4>Jeden kontakt</h4>
+          <p>Zespół IBK koordynujący całą trasę, nawet gdy zaangażowanych jest kilku przewoźników.</p>
+        </div>
+      </div>
+      <div class="service-benefit">
+        <div class="ic">💬</div>
+        <div>
+          <h4>Płynna komunikacja</h4>
+          <p>Skoordynowana wymiana z naszymi europejskimi partnerami na każdym etapie trasy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:640px;">
+    <div class="section-head center">
+      <div class="eyebrow">Czy to dla Ciebie?</div>
+      <h2>To rozwiązanie jest idealne, jeśli</h2>
+    </div>
+    <ul class="service-list"><li>Regularne lub jednorazowe przesyłki do partnerskiego kraju europejskiego</li><li>Firmy eksportujące lub importujące w ramach UE</li><li>Potrzeba jednego kontaktu dla trasy obejmującej kilka krajów</li><li>Poszukiwanie doświadczonego partnera w przepływach międzynarodowych</li></ul>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <div class="final-cta" style="margin-bottom:50px;">
+      <div>
+        <h2>Potrzebujesz usługi transport międzynarodowy?</h2>
+        <p>Opowiedz nam o swoim projekcie, odpowiemy w ciągu 24 godzin z odpowiednim rozwiązaniem.</p>
+      </div>
+      <a href="contact.html" class="btn btn-navy">Poproś o wycenę →</a>
+    </div>
+    <div class="section-head center">
+      <div class="eyebrow">Inne usługi</div>
+      <h2>Poznaj nasze pozostałe rozwiązania</h2>
+    </div>
+    <div class="other-services">
+      <a href="service-ftl.html" class="other-service-card" style="display:block;">
+        <div class="ic">🚛</div>
+        <h5>Transport FTL</h5>
+      </a>
+      <a href="service-ltl.html" class="other-service-card" style="display:block;">
+        <div class="ic">📦</div>
+        <h5>Transport LTL</h5>
+      </a>
+      <a href="service-express.html" class="other-service-card" style="display:block;">
+        <div class="ic">⚡</div>
+        <h5>Transport Ekspresowy</h5>
+      </a>
+      <a href="service-freight-forwarding.html" class="other-service-card" style="display:block;">
+        <div class="ic">🤝</div>
+        <h5>Spedycja</h5>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <span class="logo-mark">IBK</span>
+          <span style="color:#fff; font-family:'Space Grotesk'; font-weight:700; font-size:16px;">IBK EURO TRANSPORT</span>
+        </div>
+        <p>IBK Euro Transport to firma transportowo-logistyczna działająca w całej Europie.</p>
+        <p style="margin-top:14px;">📞 <a href="tel:+33185763070">+33 1 85 76 30 70</a></p>
+        <p style="margin-top:6px;">✉️ contact@ibkeurotransport.eu
+          <span class="placeholder-note">⚠️ tymczasowy e-mail, oczekiwanie na domenę</span>
+        </p>
+        <p style="margin-top:10px;">17-19 Boulevard de la Muette<br>95140 Garges-lès-Gonesse, Francja</p>
+      </div>
+      <div>
+        <h5>Firma</h5>
+        <ul>
+          <li><a href="about.html">O nas</a></li>
+          <li><a href="index.html#careers">Kariera</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Usługi</h5>
+        <ul>
+          <li><a href="service-ftl.html">Transport FTL</a></li>
+          <li><a href="service-ltl.html">Transport LTL</a></li>
+          <li><a href="service-express.html">Transport Ekspresowy</a></li>
+          <li><a href="service-freight-forwarding.html">Spedycja</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Newsletter</h5>
+        <p style="margin-bottom:12px;">Otrzymuj nasze aktualności logistyczne.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Twój e-mail" style="flex:1; min-width:0; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.05); color:#fff; font-size:13px;">
+        </div>
+        <button class="btn btn-pink" style="margin-top:10px; width:100%; justify-content:center;">Subskrybuj</button>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 IBK Euro Transport. Wszelkie prawa zastrzeżone.</div>
+      <div>
+        <a href="#">Nota prawna</a>
+        <a href="#">Polityka prywatności</a>
+        <a href="#">Warunki korzystania</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Bandeau défilant : on duplique une fois le contenu pour une boucle
+  // continue et sans coupure visible (l'animation défile de 0 à -50%,
+  // exactement la largeur d'une copie).
+  var track = document.getElementById('tickerTrack');
+  if(track){ track.innerHTML += track.innerHTML; }
+
+  // Menu déroulant de langue
+  var langWrap = document.getElementById('langWrap');
+  var langBtn = document.getElementById('langBtn');
+  langBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    langWrap.classList.toggle('open');
+  });
+  document.addEventListener('click', function(){ langWrap.classList.remove('open'); });
+  document.querySelectorAll('.lang-opt').forEach(function(opt){
+    opt.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(opt.dataset.lang){
+        alert("Ten język będzie wkrótce dostępny!");
+        return;
+      }
+      document.querySelectorAll('.lang-opt').forEach(function(o){ o.classList.remove('active'); });
+      opt.classList.add('active');
+      langWrap.classList.remove('open');
+    });
+  });
+  // Envoi générique d'un formulaire via mailto : construit un e-mail
+  // pré-rempli à partir des champs du formulaire — utilisé uniquement en
+  // secours si l'écriture directe dans le TMS échoue (ex : coupure réseau).
+  function sendViaMailto(formEl, subject, toEmail){
+    var data = new FormData(formEl);
+    var lines = [];
+    for (var pair of data.entries()){
+      if (pair[1]) lines.push(pair[0] + ' : ' + pair[1]);
+    }
+    var body = lines.join('\n');
+    var mailto = 'mailto:' + toEmail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+  }
+
+  // ===== Connexion directe au TMS (table demandes_devis) =====
+  // Le site dépose uniquement des demandes (jamais de lecture), via la clé
+  // publique — sans risque, la sécurité réelle est assurée côté serveur par
+  // les règles RLS de la table (le site ne peut qu'insérer, jamais lire ou
+  // modifier les données existantes).
+  var IBK_SUPABASE_URL = 'https://fhecosnfbufchvuiufpe.supabase.co';
+  var IBK_SUPABASE_KEY = 'sb_publishable_tzTAe1wks12nr7TgKUtP9Q_1zfcVpjz';
+  var ibkSb = (typeof supabase !== 'undefined')
+    ? supabase.createClient(IBK_SUPABASE_URL, IBK_SUPABASE_KEY)
+    : null;
+
+  function showFormSuccess(formEl, message){
+    var card = formEl.closest('.form-card');
+    if (!card) { formEl.style.display = 'none'; return; }
+    card.innerHTML =
+      '<div style="text-align:center; padding:20px 0;">' +
+      '<div style="font-size:38px; margin-bottom:14px;">✅</div>' +
+      '<h3 style="font-size:18px; color:var(--navy); margin-bottom:8px;">Zapytanie wysłane!</h3>' +
+      '<p style="font-size:13.5px; color:var(--muted);">' + message + '</p>' +
+      '</div>';
+  }
+
+  // typeDemande : 'contact' | 'transporteur' | 'commissionnaire' | 'chargeur'
+  // fieldMap : correspondance entre les colonnes de la table et les noms
+  // des champs du formulaire (name="...").
+  async function submitDemande(formEl, typeDemande, fieldMap, fallbackSubject, fallbackEmail){
+    var submitBtn = formEl.querySelector('button[type="submit"]');
+    var originalLabel = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Wysyłanie…'; }
+
+    var data = new FormData(formEl);
+    var raw = {};
+    for (var pair of data.entries()) raw[pair[0]] = pair[1];
+
+    var payload = {
+      type_demande: typeDemande,
+      nom: raw[fieldMap.nom] || null,
+      entreprise: raw[fieldMap.entreprise] || null,
+      email: raw[fieldMap.email] || null,
+      telephone: raw[fieldMap.telephone] || null,
+      siret: raw[fieldMap.siret] || null,
+      profil: raw[fieldMap.profil] || null,
+      message: raw[fieldMap.message] || null,
+      // Détails du trajet (formulaire Contact uniquement, quand renseignés) —
+      // permettent à l'équipe d'avoir une base fixe pour calculer le devis
+      // dans le module Cotation du TMS.
+      pays_depart: raw['PaysDepart'] || null,
+      cp_depart: raw['CpDepart'] || null,
+      pays_arrivee: raw['PaysArrivee'] || null,
+      cp_arrivee: raw['CpArrivee'] || null,
+      type_camion: raw['TypeCamion'] || null,
+      details: raw,
+    };
+
+    try {
+      if (!ibkSb) throw new Error('Client Supabase non disponible');
+      var res = await ibkSb.from('demandes_devis').insert(payload);
+      if (res.error) throw res.error;
+      showFormSuccess(formEl, "Dziękujemy! Twoje zapytanie zostało przesłane do naszego zespołu — odpowiemy w ciągu 24 godzin.");
+    } catch (e) {
+      console.error('IBK — erreur envoi demande, secours par e-mail :', e);
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
+      sendViaMailto(formEl, fallbackSubject, fallbackEmail);
+    }
+  }
+</script>
+
+
+</body>
+</html>

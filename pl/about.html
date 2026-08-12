@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kontakt — IBK Euro Transport</title>
-<meta name="description" content="Skontaktuj się z IBK Euro Transport w sprawie każdego zapytania dotyczącego transportu, spedycji lub współpracy." />
+<title>O nas — IBK Euro Transport</title>
+<meta name="description" content="Poznaj IBK Euro Transport, firmę spedycyjną z siedzibą we Francji." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
     --navy:#0d1b2a;
@@ -474,12 +473,12 @@
       <div class="lang-wrap" id="langWrap">
         <button class="lang-btn" id="langBtn">🌐 PL <span class="chev">▾</span></button>
         <div class="lang-menu">
-          <a class="lang-opt" href="../contact.html"><span class="flag">🇫🇷</span> Français</a>
-          <a class="lang-opt" href="../en/contact.html"><span class="flag">🇬🇧</span> English</a>
-          <a class="lang-opt" href="../de/contact.html"><span class="flag">🇩🇪</span> Deutsch</a>
-          <a class="lang-opt" href="../es/contact.html"><span class="flag">🇪🇸</span> Español</a>
-          <a class="lang-opt" href="../it/contact.html"><span class="flag">🇮🇹</span> Italiano</a>
-          <a class="lang-opt" href="../nl/contact.html"><span class="flag">🇳🇱</span> Nederlands</a>
+          <a class="lang-opt" href="../a-propos.html"><span class="flag">🇫🇷</span> Français</a>
+          <a class="lang-opt" href="../en/about.html"><span class="flag">🇬🇧</span> English</a>
+          <a class="lang-opt" href="../de/about.html"><span class="flag">🇩🇪</span> Deutsch</a>
+          <a class="lang-opt" href="../es/about.html"><span class="flag">🇪🇸</span> Español</a>
+          <a class="lang-opt" href="../it/about.html"><span class="flag">🇮🇹</span> Italiano</a>
+          <a class="lang-opt" href="../nl/about.html"><span class="flag">🇳🇱</span> Nederlands</a>
           <button class="lang-opt active" data-lang="pl"><span class="flag">🇵🇱</span> Polski</button>
         </div>
       </div>
@@ -493,81 +492,84 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="wrap">
-    <div class="crumb"><a href="index.html">Strona główna</a> / Kontakt</div>
-    <h1>Skontaktuj się z nami</h1>
-    <p>Pytanie, potrzeba transportowa, prośba o współpracę? Nasz zespół odpowiada w ciągu 24 godzin.</p>
+    <div class="crumb"><a href="index.html">Strona główna</a> / O nas</div>
+    <h1>O IBK Euro Transport</h1>
+    <p>Zespół zaangażowany w rozwój Twojej logistyki w całej Europie.</p>
   </div>
 </section>
 
 <section>
-  <div class="wrap contact-grid">
+  <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;">
     <div>
-      <div class="contact-info-card">
-        <div class="ic">📞</div>
-        <h4>Telefon</h4>
-        <p><a href="tel:+33185763070">+33 1 85 76 30 70</a><br>Pon–Sob: 8:00–18:00</p>
-      </div>
-      <div class="contact-info-card">
-        <div class="ic">✉️</div>
-        <h4>E-mail</h4>
-        <p>contact@ibkeurotransport.eu
-          <span class="placeholder-note" style="display:block; margin-top:6px;">⚠️ tymczasowy e-mail, oczekiwanie na domenę</span>
-        </p>
-      </div>
-      <div class="contact-info-card">
-        <div class="ic">📍</div>
-        <h4>Adres</h4>
-        <p>17-19 Boulevard de la Muette<br>95140 Garges-lès-Gonesse, Francja</p>
-      </div>
+      <div class="eyebrow">Nasza historia</div>
+      <h2 style="font-size:30px; color:var(--navy); margin-bottom:16px;">Razem napędzamy Europę</h2>
+      <p style="color:var(--muted); font-size:15px; line-height:1.7; margin-bottom:16px;">IBK Euro Transport to firma spedycyjna z siedzibą w Garges-lès-Gonesse (Francja). Łączymy nadawców i przewoźników w całej Europie, aby zapewnić niezawodne, szybkie i przejrzyste rozwiązania logistyczne.</p>
+      <p style="color:var(--muted); font-size:15px; line-height:1.7;">Dzięki szerokiej sieci przewoźników partnerskich obejmujemy zasięgiem 9 krajów europejskich i dostosowujemy każde rozwiązanie do Twojego biznesu — od pełnych ładunków po drobnicę, aż po spedycję międzynarodową.</p>
     </div>
-    <div class="form-card">
-      <h3 style="font-size:19px; color:var(--navy); margin-bottom:6px;">Wyślij nam wiadomość</h3>
-      <p style="font-size:13.5px; color:var(--muted); margin-bottom:24px;">Wypełnij ten formularz — Twoje zapytanie zostanie przesłane bezpośrednio do naszego zespołu.</p>
-      <form id="contactForm" onsubmit="event.preventDefault(); submitDemande(this, 'contact', {nom:'Nom', entreprise:'Société', email:'E-mail', telephone:'Téléphone', profil:'Profil', message:'Message'}, 'Nowe zapytanie kontaktowe — Strona IBK Euro Transport', 'contact@ibkeurotransport.eu');">
-        <div class="f-row">
-          <div class="f-field"><label>Imię i nazwisko *</label><input class="f-input" name="Nom" required></div>
-          <div class="f-field"><label>Firma</label><input class="f-input" name="Société"></div>
-        </div>
-        <div class="f-row">
-          <div class="f-field"><label>E-mail *</label><input class="f-input" type="email" name="E-mail" required></div>
-          <div class="f-field"><label>Telefon</label><input class="f-input" name="Téléphone"></div>
-        </div>
-        <div class="f-field">
-          <label>Jesteś *</label>
-          <select class="f-select" name="Profil" required>
-            <option value="">Wybierz...</option>
-            <option>Nadawca / Eksporter</option>
-            <option>Przewoźnik</option>
-            <option>Spedytor</option>
-            <option>Producent</option>
-            <option>Inne</option>
-          </select>
-        </div>
+    <div style="border-radius:18px; overflow:hidden; height:360px;">
+      <img src="../bureau-equipe.jpg" alt="Zespół IBK Euro Transport" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+  </div>
+</section>
 
-        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--muted); margin:22px 0 14px; padding-top:18px; border-top:1px solid var(--line);">Szczegóły transportu (jeśli dotyczy)</div>
-        <div class="f-row">
-          <div class="f-field"><label>Kraj wysyłki</label><input class="f-input" name="PaysDepart" placeholder="Francja"></div>
-          <div class="f-field"><label>Kod pocztowy wysyłki</label><input class="f-input" name="CpDepart" placeholder="np. 95140"></div>
-        </div>
-        <div class="f-row">
-          <div class="f-field"><label>Kraj docelowy</label><input class="f-input" name="PaysArrivee" placeholder="Francja"></div>
-          <div class="f-field"><label>Kod pocztowy docelowy</label><input class="f-input" name="CpArrivee" placeholder="np. 69000"></div>
-        </div>
-        <div class="f-field">
-          <label>Preferowany typ pojazdu</label>
-          <select class="f-select" name="TypeCamion">
-            <option value="">Nie określono</option>
-            <option>Tautliner</option>
-            <option>Mega Tautliner</option>
-            <option>Furgon</option>
-            <option>Chłodnia</option>
-          </select>
-        </div>
+<section class="services">
+  <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:22px;">
+    <div class="value-card" style="text-align:left; padding:30px;">
+      <div class="ic">🎯</div>
+      <h4 style="font-size:17px; margin-bottom:10px;">Nasza misja</h4>
+      <p style="font-size:13.5px; line-height:1.6;">Zapewnienie niezawodnych, wydajnych i przejrzystych rozwiązań transportowych i logistycznych w całej Europie, dając naszym klientom środki do rozwijania biznesu z pewnością siebie.</p>
+    </div>
+    <div class="value-card" style="text-align:left; padding:30px;">
+      <div class="ic">👁</div>
+      <h4 style="font-size:17px; margin-bottom:10px;">Nasza wizja</h4>
+      <p style="font-size:13.5px; line-height:1.6;">Stanie się wiodącym partnerem transportowym w Europie, uznawanym za niezawodność, przejrzystość i jakość sieci przewoźników partnerskich.</p>
+    </div>
+  </div>
+</section>
 
-        <div class="f-field"><label>Wiadomość *</label><textarea class="f-textarea" name="Message" required placeholder="Rodzaj towaru, wolumeny, częstotliwość, szczególne wymagania..."></textarea></div>
-        <button type="submit" class="btn btn-pink f-submit">Wyślij wiadomość →</button>
-        <p class="form-note">* Pola obowiązkowe. Twoje zapytanie jest przesyłane bezpośrednio do naszego zespołu — zazwyczaj odpowiadamy w ciągu 24 godzin.</p>
-      </form>
+<section class="services">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Nasze wartości</div>
+      <h2>Co nas napędza każdego dnia</h2>
+    </div>
+    <div class="value-grid">
+      <div class="value-card"><div class="ic">🤝</div><h4>Niezawodność</h4><p>Dotrzymywane zobowiązania, przy każdym zleceniu.</p></div>
+      <div class="value-card"><div class="ic">💬</div><h4>Przejrzystość</h4><p>Jasne ceny, bezpośrednia komunikacja.</p></div>
+      <div class="value-card"><div class="ic">⚡</div><h4>Responsywność</h4><p>Dostępny zespół i szybka obsługa Twoich zapytań.</p></div>
+      <div class="value-card"><div class="ic">🌍</div><h4>Bliskość</h4><p>Lokalna sieć przewoźników w każdym kraju objętym zasięgiem.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats" style="background:var(--navy); border:none;">
+  <div class="wrap stats-grid" style="border-color:rgba(255,255,255,.1);">
+    <div style="border-color:rgba(255,255,255,.1);"><div class="stat-num" style="color:#fff;">2021</div><div class="stat-lbl" style="color:rgba(255,255,255,.55);">Rok założenia</div></div>
+    <div style="border-color:rgba(255,255,255,.1);"><div class="stat-num" style="color:#fff;">9</div><div class="stat-lbl" style="color:rgba(255,255,255,.55);">Krajów objętych zasięgiem</div></div>
+    <div style="border-color:rgba(255,255,255,.1);"><div class="stat-num" style="color:#fff;">99%</div><div class="stat-lbl" style="color:rgba(255,255,255,.55);">Dostaw na czas</div></div>
+    <div style="border-color:rgba(255,255,255,.1);"><div class="stat-num" style="color:#fff;">50+</div><div class="stat-lbl" style="color:rgba(255,255,255,.55);">Przewoźników partnerskich</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap" style="max-width:720px;">
+    <div class="section-head center">
+      <div class="eyebrow">Nasza droga</div>
+      <h2>Rozwój krok po kroku</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="yr">2021</div><h4>Założenie firmy</h4><p>Uruchomienie naszej działalności spedycyjnej, z pierwszą bazą klientów i przewoźników partnerskich.</p></div>
+      <div class="timeline-item"><div class="yr">2023–2025</div><h4>Rozwój sieci</h4><p>Stopniowe rozszerzanie naszego zasięgu w całej Europie i dywersyfikacja naszej działalności.</p></div>
+      <div class="timeline-item"><div class="yr">2026</div><h4>IBK Euro Transport</h4><p>Strukturyzacja naszej działalności transportowej i uruchomienie własnej platformy cyfrowej.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final-cta">
+      <div><h2>Chcesz dowiedzieć się więcej?</h2><p>Nasz zespół jest do Twojej dyspozycji w razie jakichkolwiek pytań.</p></div>
+      <a href="contact.html" class="btn btn-navy">Skontaktuj się z nami</a>
     </div>
   </div>
 </section>
