@@ -417,11 +417,12 @@
   @media (max-width:800px){ .partners-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:480px){ .partners-grid{grid-template-columns:1fr;} }
   .partner-card{
-    background:#fff; border:1px solid var(--line); border-radius:14px; padding:32px 20px;
+    background:#fff; border:1px solid var(--line); border-radius:14px; padding:26px 20px;
     text-align:center; display:flex; align-items:center; justify-content:center; min-height:96px;
     transition:box-shadow .2s, transform .2s;
   }
   .partner-card:hover{box-shadow:0 16px 34px rgba(13,27,42,.08); transform:translateY(-3px); border-color:transparent;}
+  .partner-card img{max-height:52px; max-width:100%; width:auto; object-fit:contain;}
   .partner-card span{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; color:var(--navy); letter-spacing:-.01em;}
 
 </style>
@@ -685,10 +686,10 @@
       <p>Importanti attori del trasporto e della logistica si affidano a noi ogni giorno.</p>
     </div>
     <div class="partners-grid">
-      <div class="partner-card"><span>La Poste</span></div>
-      <div class="partner-card"><span>Chronopost</span></div>
-      <div class="partner-card"><span>Chrono Green</span></div>
-      <div class="partner-card"><span>TCS</span></div>
+      <div class="partner-card"><img src="../la-poste.png" alt="La Poste" loading="lazy"></div>
+      <div class="partner-card"><img src="../chronopost.png" alt="Chronopost" loading="lazy"></div>
+      <div class="partner-card"><img src="../chrono-green.png" alt="Chrono Green" loading="lazy"></div>
+      <div class="partner-card"><img src="../tcs.png" alt="TCS" loading="lazy"></div>
     </div>
   </div>
 </section>
