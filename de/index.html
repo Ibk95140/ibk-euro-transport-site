@@ -8,6 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png">
 <style>
   :root{
     --navy:#0d1b2a;
@@ -105,8 +109,8 @@
   /* ===== HEADER ===== */
   header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line);}
   .header-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
-  .logo{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; color:var(--navy);}
-  .logo-mark{width:38px; height:38px; border-radius:9px; background:linear-gradient(135deg, var(--pink), #ff4fa0); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:14px;}
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo img{height:38px; width:auto; display:block;}
   .logo small{display:block; font-family:'Inter'; font-weight:600; font-size:10px; letter-spacing:.12em; color:var(--pink); margin-top:1px;}
   nav.main-nav{display:flex; gap:34px; align-items:center;}
   nav.main-nav a{font-size:14px; font-weight:600; color:var(--ink);}
@@ -319,6 +323,7 @@
   .foot-grid li{list-style:none; margin-bottom:11px;}
   .foot-grid a:hover{color:#fff;}
   .foot-logo{display:flex; align-items:center; gap:10px; margin-bottom:16px;}
+  .foot-logo img{height:34px; width:auto; display:block;}
   .foot-bottom{border-top:1px solid rgba(255,255,255,.1); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12.5px;}
   .foot-bottom a{margin-left:18px;}
   .foot-bottom a:first-child{margin-left:0;}
@@ -488,8 +493,7 @@
 <header>
   <div class="wrap header-inner">
     <a href="index.html" class="logo">
-      <span class="logo-mark">IBK</span>
-      <span>IBK EURO<br><small>TRANSPORT</small></span>
+      <img src="../ibk-logo.png" alt="IBK Euro Afrique">
     </a>
     <nav class="main-nav">
       <a href="index.html">Startseite</a>
@@ -875,8 +879,7 @@
     <div class="foot-grid">
       <div>
         <div class="foot-logo">
-          <span class="logo-mark">IBK</span>
-          <span style="color:#fff; font-family:'Space Grotesk'; font-weight:700; font-size:16px;">IBK EURO TRANSPORT</span>
+          <img src="../ibk-logo.png" alt="IBK Euro Afrique">
         </div>
         <p>IBK Euro Transport ist ein Speditions- und Logistikunternehmen, das europaweit tätig ist.</p>
         <p style="margin-top:14px;">📞 <a href="tel:+33185763070">+33 1 85 76 30 70</a></p>
@@ -913,7 +916,7 @@
     <div class="foot-bottom">
       <div>© 2026 IBK Euro Transport. Alle Rechte vorbehalten.</div>
       <div>
-        <a href="#">Impressum</a>
+        <a href="../mentions-legales.html">Impressum</a>
         <a href="../confidentialite.html">Datenschutz &amp; AGB</a>
       </div>
     </div>
