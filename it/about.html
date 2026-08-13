@@ -412,18 +412,28 @@
   .other-service-card .ic{font-size:24px; margin-bottom:10px;}
   .other-service-card h5{font-size:13px; color:var(--navy);}
 
-  /* ===== PARTNERS ===== */
-  .partners-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
-  @media (max-width:800px){ .partners-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:480px){ .partners-grid{grid-template-columns:1fr;} }
-  .partner-card{
-    background:#fff; border:1px solid var(--line); border-radius:14px; padding:36px 26px;
-    text-align:center; display:flex; align-items:center; justify-content:center; min-height:150px;
-    transition:box-shadow .2s, transform .2s;
+  /* ===== PARTNERS (bande défilante) ===== */
+  .partners-ticker{position:relative; overflow:hidden; padding:10px 0;}
+  .partners-ticker::before, .partners-ticker::after{
+    content:''; position:absolute; top:0; bottom:0; width:70px; z-index:2; pointer-events:none;
   }
-  .partner-card:hover{box-shadow:0 16px 34px rgba(13,27,42,.08); transform:translateY(-3px); border-color:transparent;}
-  .partner-card img{max-height:88px; max-width:100%; width:auto; object-fit:contain;}
-  .partner-card span{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; color:var(--navy); letter-spacing:-.01em;}
+  .partners-ticker::before{left:0; background:linear-gradient(90deg, var(--bg), transparent);}
+  .partners-ticker::after{right:0; background:linear-gradient(270deg, var(--bg), transparent);}
+  .partners-track{
+    display:flex; align-items:center; gap:64px;
+    animation:partners-scroll 28s linear infinite;
+    width:max-content;
+  }
+  .partners-ticker:hover .partners-track{animation-play-state:paused;}
+  .partner-logo{height:64px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .partner-logo img{max-height:100%; max-width:170px; object-fit:contain;}
+  @keyframes partners-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .partners-track{animation:none;}
+  }
 
 </style>
 </head>
