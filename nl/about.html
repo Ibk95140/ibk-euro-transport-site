@@ -122,7 +122,19 @@
     font-size:14px; font-weight:600; color:var(--ink); font-family:'Inter'; padding:0;
   }
   .nav-drop-btn:hover{color:var(--pink);}
-  .nav-drop-btn.nav-pill{background:var(--pink-light); color:var(--pink); padding:7px 14px; border-radius:20px;}
+  .nav-drop-btn.nav-pill{
+    background:var(--pink); color:#fff; padding:7px 14px; border-radius:20px;
+    animation:pulse-connect 2.2s ease-in-out infinite;
+  }
+  .nav-drop-btn.nav-pill .chev{color:#fff;}
+  @keyframes pulse-connect{
+    0%   { box-shadow:0 0 0 0 rgba(212,0,110,.55); }
+    70%  { box-shadow:0 0 0 9px rgba(212,0,110,0); }
+    100% { box-shadow:0 0 0 0 rgba(212,0,110,0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .nav-drop-btn.nav-pill{animation:none;}
+  }
   .nav-drop-btn .chev{font-size:9px; transition:transform .15s;}
   .nav-dropdown:hover .nav-drop-btn .chev{transform:rotate(180deg);}
   .nav-drop-menu{
@@ -630,7 +642,7 @@
     <div class="foot-grid">
       <div>
         <div class="foot-logo">
-          <img src="../ibk-logo.png" alt="IBK Euro Afrique">
+          <img src="../ibk-logo-white.png" alt="IBK Euro Afrique">
         </div>
         <p>IBK Euro Transport is een transport- en logistiekbedrijf dat actief is in heel Europa.</p>
         <p style="margin-top:14px;">📞 <a href="tel:+33185763070">+33 1 85 76 30 70</a></p>
