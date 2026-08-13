@@ -63,7 +63,7 @@
   .topbar::after{right:0; background:linear-gradient(270deg, var(--navy), transparent);}
   .ticker-track{
     display:flex; align-items:center; white-space:nowrap;
-    animation:ticker-scroll 38s linear infinite;
+    animation:ticker-scroll 65s linear infinite;
     width:max-content;
   }
   .topbar:hover .ticker-track{animation-play-state:paused;}
@@ -412,6 +412,18 @@
   .other-service-card .ic{font-size:24px; margin-bottom:10px;}
   .other-service-card h5{font-size:13px; color:var(--navy);}
 
+  /* ===== PARTNERS ===== */
+  .partners-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:800px){ .partners-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .partners-grid{grid-template-columns:1fr;} }
+  .partner-card{
+    background:#fff; border:1px solid var(--line); border-radius:14px; padding:32px 20px;
+    text-align:center; display:flex; align-items:center; justify-content:center; min-height:96px;
+    transition:box-shadow .2s, transform .2s;
+  }
+  .partner-card:hover{box-shadow:0 16px 34px rgba(13,27,42,.08); transform:translateY(-3px); border-color:transparent;}
+  .partner-card span{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; color:var(--navy); letter-spacing:-.01em;}
+
 </style>
 </head>
 <body>
@@ -660,6 +672,23 @@
       <div class="ach-card"><div class="ach-tag">Partnerstwo</div><h4>Spedytorzy</h4><p>Poszerz swoją ofertę usług, współpracując z IBK Euro Transport.</p></div>
       <div class="ach-card"><div class="ach-tag">Partnerstwo</div><h4>Nadawcy i eksporterzy</h4><p>Rozwiązania transportowe na miarę Twoich towarów.</p></div>
       <div class="ach-card"><div class="ach-tag">Partnerstwo</div><h4>Producenci</h4><p>Rozwiązania transportowe i łańcucha dostaw dla firm przemysłowych.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="services">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Ufają nam</div>
+      <h2>Nasi partnerzy</h2>
+      <p>Wiodący gracze w branży transportowej i logistycznej ufają nam każdego dnia.</p>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card"><span>La Poste</span></div>
+      <div class="partner-card"><span>Chronopost</span></div>
+      <div class="partner-card"><span>Chrono Green</span></div>
+      <div class="partner-card"><span>TCS</span></div>
     </div>
   </div>
 </section>
