@@ -136,10 +136,19 @@
     .nav-drop-btn.nav-pill{animation:none;}
   }
   .nav-pill-marketplace{
-    background:#e8790a !important; color:#fff !important; animation:none !important; box-shadow:none !important;
+    background:var(--navy) !important; color:#fff !important; animation:none !important; box-shadow:none !important;
   }
   .nav-pill-marketplace .chev{color:#fff !important;}
-  .nav-pill-marketplace:hover{background:#c96608 !important;}
+  .nav-pill-marketplace:hover{background:#16283f !important;}
+  .marketplace-text{display:inline-block; animation:marketplace-sway 1.8s ease-in-out infinite;}
+  @keyframes marketplace-sway{
+    0%, 100% { transform:translateX(0) rotate(0deg); }
+    25%      { transform:translateX(-2px) rotate(-2deg); }
+    75%      { transform:translateX(2px) rotate(2deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marketplace-text{animation:none;}
+  }
   .nav-drop-btn .chev{font-size:9px; transition:transform .15s;}
   .nav-dropdown:hover .nav-drop-btn .chev{transform:rotate(180deg);}
   .nav-drop-menu{
@@ -535,7 +544,7 @@
         </div>
       </div>
       <div class="nav-dropdown">
-        <button class="nav-drop-btn nav-pill nav-pill-marketplace">IBK Marketplace <span class="chev">▾</span></button>
+        <button class="nav-drop-btn nav-pill nav-pill-marketplace"><span class="marketplace-text">IBK Marketplace</span> <span class="chev">▾</span></button>
         <div class="nav-drop-menu">
           <a href="index.html#fret-connect">📦 Publier une mission</a>
           <a href="index.html#fret-connect">🚗 Trouver une mission</a>
