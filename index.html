@@ -135,6 +135,11 @@
   @media (prefers-reduced-motion: reduce){
     .nav-drop-btn.nav-pill{animation:none;}
   }
+  .nav-pill-marketplace{
+    background:#fdf0d8 !important; color:#b8770a !important; animation:none !important; box-shadow:none !important;
+  }
+  .nav-pill-marketplace .chev{color:#b8770a !important;}
+  .nav-pill-marketplace:hover{background:#fbe4bc !important;}
   .nav-drop-btn .chev{font-size:9px; transition:transform .15s;}
   .nav-dropdown:hover .nav-drop-btn .chev{transform:rotate(180deg);}
   .nav-drop-menu{
@@ -529,6 +534,13 @@
           <a href="rejoindre.html#chargeur">📦 Vous êtes chargeur</a>
         </div>
       </div>
+      <div class="nav-dropdown">
+        <button class="nav-drop-btn nav-pill nav-pill-marketplace">IBK Marketplace <span class="chev">▾</span></button>
+        <div class="nav-drop-menu">
+          <a href="index.html#fret-connect">📦 Publier une mission</a>
+          <a href="index.html#fret-connect">🚗 Trouver une mission</a>
+        </div>
+      </div>
       <a href="contact.html">Contact</a>
     </nav>
     <div class="header-right">
@@ -702,6 +714,31 @@
         <h3>Vous êtes chargeur ?</h3>
         <p>Vous cherchez un partenaire transport fiable ? Obtenez une solution logistique sur mesure.</p>
         <a href="rejoindre.html#chargeur" class="btn btn-pink" style="padding:10px 20px; font-size:13px;">Être recontacté →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IBK FRET CONNECT -->
+<section class="services" id="fret-connect">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Nouveau — sous-traitance dernière livraison</div>
+      <h2>IBK Fret Connect — la marketplace PuD en Île-de-France</h2>
+      <p>Publiez ou trouvez des missions de sous-traitance dernière livraison (PuD, messagerie) en Île-de-France, en toute autonomie et en quelques clics.</p>
+    </div>
+    <div class="svc-grid" style="grid-template-columns:repeat(2,1fr); max-width:760px; margin:0 auto;">
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
+        <h3>Vous êtes donneur d'ordre ?</h3>
+        <p>Publiez vos tournées ponctuelles ou récurrentes et recevez des candidatures de transporteurs vérifiés, sans démarche de sourcing.</p>
+        <a href="https://ibk-fret-connect.vercel.app/" target="_blank" rel="noopener" class="lnk">Publier une mission →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚗</div>
+        <h3>Vous êtes transporteur ?</h3>
+        <p>Trouvez des missions disponibles près de chez vous et candidatez en un clic, paiement sécurisé garanti.</p>
+        <a href="https://ibk-fret-connect.vercel.app/" target="_blank" rel="noopener" class="lnk">Trouver une mission →</a>
       </div>
     </div>
   </div>
@@ -914,6 +951,7 @@
           <li><a href="service-ltl.html">Transport LTL</a></li>
           <li><a href="service-express.html">Fret express</a></li>
           <li><a href="service-affretement.html">Affrètement</a></li>
+          <li><a href="index.html#fret-connect">IBK Marketplace</a></li>
         </ul>
       </div>
       <div>
