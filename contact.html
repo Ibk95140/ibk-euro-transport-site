@@ -113,18 +113,18 @@
   .logo{display:flex; align-items:center; gap:10px;}
   .logo img{height:38px; width:auto; display:block;}
   .logo small{display:block; font-family:'Inter'; font-weight:600; font-size:10px; letter-spacing:.12em; color:var(--pink); margin-top:1px;}
-  nav.main-nav{display:flex; gap:34px; align-items:center;}
-  nav.main-nav a{font-size:14px; font-weight:600; color:var(--ink);}
+  nav.main-nav{display:flex; gap:22px; align-items:center;}
+  nav.main-nav a{font-size:13px; font-weight:600; color:var(--ink); white-space:nowrap;}
   nav.main-nav a:hover{color:var(--pink);}
   .nav-pill{background:var(--pink-light); color:var(--pink) !important; padding:7px 14px; border-radius:20px;}
   .nav-dropdown{position:relative;}
   .nav-drop-btn{
     display:flex; align-items:center; gap:5px; background:none; border:none; cursor:pointer;
-    font-size:14px; font-weight:600; color:var(--ink); font-family:'Inter'; padding:0;
+    font-size:13px; font-weight:600; color:var(--ink); font-family:'Inter'; padding:0; white-space:nowrap;
   }
   .nav-drop-btn:hover{color:var(--pink);}
   .nav-drop-btn.nav-pill{
-    background:var(--pink); color:#fff !important; padding:7px 14px; border-radius:20px;
+    background:var(--pink); color:#fff !important; padding:6px 12px; border-radius:20px;
     animation:pulse-connect 1.3s ease-in-out infinite;
   }
   .nav-drop-btn.nav-pill .chev{color:#fff !important;}
@@ -137,10 +137,10 @@
     .nav-drop-btn.nav-pill{animation:none;}
   }
   .nav-pill-marketplace{
-    background:#fdf0d8 !important; color:#b8770a !important; animation:none !important; box-shadow:none !important;
+    background:#e8790a !important; color:#fff !important; animation:none !important; box-shadow:none !important;
   }
-  .nav-pill-marketplace .chev{color:#b8770a !important;}
-  .nav-pill-marketplace:hover{background:#fbe4bc !important;}
+  .nav-pill-marketplace .chev{color:#fff !important;}
+  .nav-pill-marketplace:hover{background:#c96608 !important;}
   .nav-drop-btn .chev{font-size:9px; transition:transform .15s;}
   .nav-dropdown:hover .nav-drop-btn .chev{transform:rotate(180deg);}
   .nav-drop-menu{
